@@ -2,14 +2,14 @@
 	"GET": {
 		"/index.html": {
 			"headers": {
-				"Location": "/html/list.html"
+				"Location": "/goanimate-rewritten"
 			},
 			"statusCode": 302,
 			"content": ""
 		},
 		"/$": {
 			"headers": {
-				"Location": "/html/list.html"
+				"Location": "/goanimate-rewritten"
 			},
 			"statusCode": 302,
 			"content": ""
@@ -26,7 +26,7 @@
 		"char_default.png": {
 			"content": "{\"message\":\"REQUEST_HAS_EXPIRED\"}"
 		},
-		"html/(.*)": {
+		"goanimate-rewritten(.*)": {
 			"headers": {
 				"Content-Type": "text/html; charset=UTF-8"
 			}

@@ -12,7 +12,6 @@ const stl = require('./static/load');
 const stp = require('./static/page');
 const sts = require('./static/pageStudio');
 const stc = require('./static/pagecc');
-const scc = require('./static/pageccCode.js');
 const asl = require('./asset/load');
 const asL = require('./asset/list');
 const ast = require('./asset/thmb');
@@ -52,7 +51,6 @@ const functions = [
 	stp,
 	stc,
 	sts,
-	scc,
 	stl,
 ];
 
