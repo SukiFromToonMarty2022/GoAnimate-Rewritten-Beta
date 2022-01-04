@@ -1,0 +1,16 @@
+createPreviewPlayer("playerdiv", {
+            height: 360,
+            width: 640,
+            player_url: "https://josephcrosmanplays532.github.io/animation/414827163ad4eb60/player.swf",
+            quality: "high",
+            wmode: "transparent",
+        }, {
+            ut: "60",
+            apiserver: "/", 
+            autostart: "0",  
+            isInitFromExternal: 1, 
+            storePath: "https://josephcrosmanplays532.github.io/store/3a981f5cb2739137/<store>", 
+            clientThemePath: "https://josephcrosmanplays532.github.io/static/ad44370a650793d9/<client_theme>", 
+            startFrame: startFrame
+        });
+    }
