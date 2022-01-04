@@ -1,2 +1,0 @@
-# GoAnimate-Rewritten-Recreation
-A Node.js api witch revives the remote edition of GoAnimate. (like sending your video to the account owner eta) If your video is lost, you might have accidently reloaded the video editor. the preview window with a fullscreen button is there for that reason. if you are trying to record, you can use inspect elements and paste in the preview window reocrd script in the text file below. saving and loading starters work though.
