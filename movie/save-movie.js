@@ -2,7 +2,7 @@ const loadPost = require('../request/post_body');
 const movie = require('./caché');
 
 module.exports = function (req, res, url) {
-	if (req.method != 'POST' || url.path != '') return;
+	if (req.method != 'POST' || url.path != '/goapi/saveMovie/') return;
 	loadPost(req, res).then(data => {
 
 		const trigAutosave = data.is_triggered_by_autosave;
