@@ -11,6 +11,7 @@ module.exports = function (req, res, url) {
 
 			var id = match[1], ext = match[2];
 			switch (ext) {
+				default:
 					res.setHeader('Content-Type', 'text/xml');
 					movie.loadXml(id).then(v => { res.statusCode = 200, res.end(v) })
 						.catch(e => { res.statusCode = 404, res.end() })
