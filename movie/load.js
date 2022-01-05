@@ -28,7 +28,7 @@ module.exports = function (req, res, url) {
 		}
 
 		case 'POST': {
-			if (!url.path.startsWith(${path})) return;
+			if (!url.path.startsWith((${path}))) return;
 
 			res.setHeader('Content-Type', 'application/zip');
 			caché.load(url.query.movieId).then(b => {
