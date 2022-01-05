@@ -44,6 +44,5 @@ module.exports = function (req, res, url) {
 				res.end(b);
 			});
 			return true;
-		}
 	}
 }
