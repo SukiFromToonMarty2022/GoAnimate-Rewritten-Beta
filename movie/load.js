@@ -1,8 +1,5 @@
-const caché = require('./caché');
-const fUtil = require('../fileUtil');
+const movie = require('./main');
 const base = Buffer.alloc(1, 0);
-const fs = require('fs');
-const movie = require('./main'); 
 
 module.exports = function (req, res, url) {
 	switch (req.method) {
@@ -34,15 +31,6 @@ module.exports = function (req, res, url) {
 			).catch(e => res.end('1'));
 			return true;
 		}
-		default:
-			if (!url.path.startsWith('/goapi/getMovie')) return;
-			const zipF = fUtil.getFileIndex('movie-', '.xml', url.query.movieId);
-			res.setHeader('Content-Type', 'application/zip');
-			
-			caché.load(zipF).then(b => {
-				b = Buffer.concat([base, b]);
-				res.end(b);
-			});
-			return true;
+		default: return;
 	}
 }
