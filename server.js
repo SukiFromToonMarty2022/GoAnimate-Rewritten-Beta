@@ -30,6 +30,8 @@ const url = require('url');
 
 const functions = [
 	mvL,
+	previewLoad,
+	previewSave,
 	pmc,
 	asl,
 	evt,
