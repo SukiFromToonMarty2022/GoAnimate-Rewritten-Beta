@@ -29,7 +29,7 @@ module.exports = function (req, res, url) {
 			if (!url.path.startsWith('/goapi/getMovie')) return;
 
 			res.setHeader('Content-Type', 'application/zip');
-			caché.loadZip(url.query.movieId).then(b => {
+			caché.load(url.query.movieId).then(b => {
 				b = Buffer.concat([base, b]);
 			res.end(b);
 			});
