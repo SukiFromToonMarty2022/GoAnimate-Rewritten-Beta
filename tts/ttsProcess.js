@@ -1,9 +1,9 @@
-const loadPost = require('./loadPostBody');
-const voices = require('./ttsInfo').voices;
+const loadPost = require('../request/post_body');
+const voices = require('./info').voices;
 const mp3Duration = require('mp3-duration');
-const caché = require('./movieCaché');
+const caché = require('../movie/caché');
 const qs = require('querystring');
-const get = require('./reqGet');
+const get = require('../request/get');
 const https = require('https');
 
 function processVoice(voiceName, text) {
