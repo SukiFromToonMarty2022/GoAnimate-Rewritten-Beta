@@ -4,7 +4,6 @@ const base = Buffer.alloc(1, 0);
 const fs = require('fs');
 const movie = require('./main'); 
 const numId = fUtil.getLastFileId('movie-', '.xml');
-const path = `/goapi/getMovie/?ut=60&userId=null&movieId=${numId}`;
 
 module.exports = function (req, res, url) {
 	switch (req.method) {
@@ -28,7 +27,7 @@ module.exports = function (req, res, url) {
 		}
 
 		case 'POST': {
-			if (!url.path.startsWith((path))) return;
+			if (!url.path.startsWith('/goapi/getMovie/?ut=60&userId=null&movieId=', numId)) return;
 
 			res.setHeader('Content-Type', 'application/zip');
 			caché.load(url.query.movieId).then(b => {
