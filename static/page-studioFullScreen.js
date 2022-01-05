@@ -1,4 +1,4 @@
-const stuff = require('../staticInfo');
+const stuff = require('./info');
 const fUtil = require('../fileUtil');
 
 function toAttrString(table) {
@@ -35,7 +35,7 @@ module.exports = function (req, res, url) {
 					'apiserver': '/', 'storePath': process.env.STORE_URL + '/<store>',
 					'clientThemePath': process.env.CLIENT_URL + '/<client_theme>', 'tray': 'custom',
 					'themeId': 'business', 'ut': 60, 'bs': 'default', 'appCode': 'go', 'page': '', 'siteId': 'go',
-					'm_mode': 'school', 'isLogin': 'Y', 'isEmbed': 1, 'ctc': 'go', 'tlang': 'en_US',
+					'm_mode': 'school', 'isLogin': 'Y', 'isEmbed': 1, 'ctc': 'go', 'tlang': 'en_US', 'autostart': '1',
 				},
 				allowScriptAccess: 'always',
 				movie: process.env.SWF_URL + '/go_full.swf', // 'http://localhost/go_full.swf'
@@ -369,7 +369,7 @@ function proceedWithFullscreenStudio() {
             wmode: "transparent",
         }, {
             ut: "60",
-	    autostart: "1",
+	    autostart: "${params.flashvars.autostart}",
             apiserver: "/", 
             isInitFromExternal: 1, 
             storePath: "https://josephcrosmanplays532.github.io/store/3a981f5cb2739137/<store>", 
