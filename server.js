@@ -9,10 +9,10 @@ const chs = require('./character/save');
 const mvu = require('./movie/upload');
 const asu = require('./asset/upload');
 const stl = require('./static/load');
-const displayPages = require('./static/page');
-const displayPagesPlayer = require('./static/pagecc.js');
-const displayPagesStudio = require('./static/page-studio.js');
-const displayPagesStudioFullscreen = require('./static/page-studioFullScreen.js');
+const stpp, = require('./static/page');
+const stc, = require('./static/pagecc.js');
+const stp, = require('./static/page-studio.js');
+const stpf, = require('./static/page-studioFullScreen.js');
 const asl = require('./asset/load');
 const asL = require('./asset/list');
 const ast = require('./asset/thmb');
@@ -49,10 +49,10 @@ const functions = [
 	tsv,
 	asu,
 	mvu,
-	displayPages,
-	displayPagesPlayer,
-	displayPagesStudio,
-	displayPagesStudioFullScreen,
+	stpp,
+	stc,
+	stp,
+	stpf,
 	stl,
 ];
 
