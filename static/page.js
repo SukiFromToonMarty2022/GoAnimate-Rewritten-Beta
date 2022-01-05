@@ -1,4 +1,4 @@
-const sessions = require('../data/sessions');
+const sessions = require('../data/sessions-preview');
 const fUtil = require('../fileUtil');
 const stuff = require('./info');
 
