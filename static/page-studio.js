@@ -1,5 +1,5 @@
 const stuff = require('./info');
-const sessions = require('../dats/sessions');
+const sessions = require('../data/sessions');
 const fUtil = require('../fileUtil');
 
 function toAttrString(table) {
