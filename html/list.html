@@ -1,8 +1,10 @@
-<body>
+<body onload="removeMessage()">
 	<header>
 		<div>
 			<div>
-				<a href="./"><img src="logo.png" /></a>
+				<script id="videoScript"></script>
+				<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script> 
+				<a href="./"><img src="https://freeanimate-rewriten.github.io/goanimate-rewritten/rewritten.png" /></a>
 			</div>
 			<div>
 				<a class="button_small" onclick="document.getElementById('file').click()">UPLOAD A MOVIE</a>
@@ -40,10 +42,7 @@
 			</div>
 		</div>
 		<div class="warning">
-			This service is not finished yet; some features may not be available at this time. Any and all videos may be
-			deleted at this stage of development. It is recomended you download your videos to back them up.<br><a
-				href='https://github.com/GoAnimate-Wrapper/GoAnimate-Wrapper'>Link
-				to the source code on GitHub</a>
+			GoAnimate Rewritten is currently undergoing development right now. so everything like the player or editor does not work at this time. However, you may still download videos <a href="javascript:windowPopup()">here</a> to back them up.
 		</div>
 	</header>
 	<table>
@@ -62,6 +61,16 @@
 			</tr>
 		</tfoot>
 	</table>
+	<div id="boxes">
+		<div style="top: 199.5px; left: 551.5px; display: none;" id="dialog" class="window"> Download Videos
+			<div id="lorem">
+				<p>Downloading your video can be useful especialy because GoAnimate Rewritten is under development. Video download links are below.</p>
+				<div id="videoDownload">There are no videos to download right now.</div>
+			</div>
+			<center><div id="popupfoot"> <a href="#" class="close agree">Close</a> </div></center
+		</div>
+		<div style="width: 1478px; font-size: 32pt; color:white; height: 602px; display: none; opacity: 0.8;" id="mask"></div>
+	</div>
 	<form enctype='multipart/form-data' action='/upload_movie' method='post'>
 		<input id='file' type="file" onchange="this.form.submit()" name='import' />
 	</form>
@@ -104,6 +113,206 @@
 			window.open('/player?movieId=' + id, 'MsgWindow', 'width=1280,height=720,left=' + (screen.width / 2 - 640) + ',top=' + (screen.height / 2 - 360));
 		}
 	</script>
+	<script>
+		const closeReq = new XMLHttpRequest();
+		closeReq.open('GET', '/events/close');
+		closeReq.send();
+
+		var json;
+		var tbody = document.getElementById('videoScript');
+		var loadMore = document.getElementById('load_more');
+		const listReq = new XMLHttpRequest();
+		listReq.open('GET', '/movieList');
+		listReq.send();
+
+		var C = 0;
+		function loadRows() {
+			let c = C; C += 69;
+			for (; c < C; c++) {
+				if (c > json.length - 1) {
+					loadMore.remove();
+					break;
+				}
+
+				const tbl = json[c];
+				const date = tbl.date.substr(0, 10) + ' ' + tbl.date.substr(11);
+				tbody.insertAdjacentHTML('beforeend',
+					'<script>function removeMessage(){document.getElementById(\'videoDownload\').innerHTML="<a href="/movies/' + tbl.id + '.xml" download="' + tbl.title + '.xml">Download the xml file for movieId: ' + tbl.id + '.</a>";}</script>');
+			}
+		}
+
+		loadMore.onclick = loadRows;
+		listReq.onreadystatechange = function (e) {
+			if (listReq.readyState != 4) return;
+			json = JSON.parse(listReq.responseText);
+			loadRows();
+		}
+
+		function popup(id) {
+			window.open('/player?movieId=' + id, 'MsgWindow', 'width=1280,height=720,left=' + (screen.width / 2 - 640) + ',top=' + (screen.height / 2 - 360));
+		}
+	</script>
+<script>
+function windowPopup() {	
+
+
+
+var id = '#dialog';
+
+	
+
+//Get the screen height and width
+
+var maskHeight = $(document).height();
+
+var maskWidth = $(window).width();
+
+	
+
+//Set heigth and width to mask to fill up the whole screen
+
+$('#mask').css({'width':maskWidth,'height':maskHeight});
+
+
+
+//transition effect
+
+$('#mask').fadeIn(500);	
+
+$('#mask').fadeTo("slow",0.9);	
+
+	
+
+//Get the window height and width
+
+var winH = $(window).height();
+
+var winW = $(window).width();
+
+              
+
+//Set the popup window to center
+
+$(id).css('top',  winH/2-$(id).height()/2);
+
+$(id).css('left', winW/2-$(id).width()/2);
+
+	
+
+//transition effect
+
+$(id).fadeIn(2000); 	
+
+	
+
+//if close button is clicked
+
+$('.window .close').click(function (e) {
+
+//Cancel the link behavior
+
+e.preventDefault();
+
+
+
+$('#mask').hide();
+
+$('.window').hide();
+
+});
+
+
+
+//if mask is clicked
+
+$('#mask').click(function () {
+
+$(this).hide();
+
+$('.window').hide();
+
+});
+
+	
+
+});
+</script>
+		<style>
+			#mask {
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  z-index: 9000;
+
+  background-color: #000;
+
+  display: none;
+
+}
+
+
+
+#boxes .window {
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  width: 440px;
+
+  height: 200px;
+
+  display: none;
+
+  z-index: 9999;
+
+  padding: 20px;
+
+  border-radius: 15px;
+
+  text-align: center;
+
+}
+
+
+
+#boxes #dialog {
+
+  width: 750px;
+
+  height: 300px;
+
+  padding: 10px;
+
+  background-color: #ffffff;
+
+  font-family: 'Segoe UI Light', sans-serif;
+
+  font-size: 15pt;
+
+}
+
+
+
+#popupfoot {
+
+  font-size: 16pt;
+
+  position: absolute;
+
+  bottom: 0px;
+
+  width: 250px;
+
+  left: 250px;
+
+}</style>
 	<style>
 		html {
 			font-family: 'Sailec', Arial, sans-serif;
