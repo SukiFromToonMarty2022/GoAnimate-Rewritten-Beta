@@ -9,7 +9,10 @@ const chs = require('./character/save');
 const mvu = require('./movie/upload');
 const asu = require('./asset/upload');
 const stl = require('./static/load');
-const stp = require('./static/page');
+const displayPages = require('./static/page');
+const displayPagesPlayer = require('./static/pagecc.js');
+const displayPagesStudio = require('./static/page-studio.js');
+const displayPagesStudioFullscreen = require('./static/page-studioFullScreen.js');
 const asl = require('./asset/load');
 const asL = require('./asset/list');
 const ast = require('./asset/thmb');
@@ -46,7 +49,10 @@ const functions = [
 	tsv,
 	asu,
 	mvu,
-	stp,
+	displayPages,
+	displayPagesPlayer,
+	displayPagesStudio,
+	displayPagesStudioFullScreen,
 	stl,
 ];
 
