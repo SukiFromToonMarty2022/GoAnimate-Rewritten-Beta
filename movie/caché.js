@@ -61,12 +61,36 @@ async function parseMovie(zip, buffer) {
 }
 
 module.exports = {
-	load(path) {
+	load(path, mId) {
 		if (!fs.existsSync(path))
 			return Promise.reject();
 		cache = {}, filePath = path;
 		const zip = nodezip.create();
 		return parseMovie(zip, fs.readFileSync(path));
+		return new Promise((res, rej) => {
+			const i = mId.indexOf('-');
+			const prefix = mId.substr(0, i);
+			const suffix = mId.substr(i + 1);
+			switch (prefix) {
+				case 'e': {
+					caché.clear(mId);
+					let data = fs.readFileSync(`${exFolder}/${suffix}.zip`);
+					res(data.subarray(data.indexOf(80)));
+					break;
+				}
+				case 'm': {
+					let numId = Number.parseInt(suffix);
+					if (isNaN(numId)) rej();
+					let filePath = fUtil.getFileIndex('movie-', '.xml', numId);
+					if (!fs.existsSync(filePath)) rej();
+
+					const buffer = fs.readFileSync(filePath);
+					parse.packXml(buffer, mId).then(v => res(v));
+					break;
+				}
+				default: rej();
+			}
+		});
 	},
 	save(path, buffer) {
 		return new Promise(res => {
