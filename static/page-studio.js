@@ -1,4 +1,5 @@
 const stuff = require('./info');
+const sessions = require('./sessions');
 const fUtil = require('../fileUtil');
 
 function toAttrString(table) {
@@ -22,26 +23,26 @@ module.exports = function (req, res, url) {
 
 	var attrs, params, title, type, desc;
 	switch (url.pathname) {
-		case '/goanimate-rewritten/create-a-terrible-video':
-			title = 'Make a video';
-			desc = 'The Video Maker lets You make a video for YouTube for free! Drag &amp; drop or type &amp; go.  It\'s Fast, Fun, Easy and Free -  GoAnimate!"';
-			type = 'studio';
+		case '/goanimate-rewritten/create-a-terrible-video': {
+			let presave = query.movieId && query.movieId.startsWith('m') ? query.movieId :
+				`m-${fUtil[query.noAutosave ? 'getNextFileId' : 'fillNextFileId']('movie-', '.xml')}`;
+			title = 'Video Editor';
 			attrs = {
-				data: process.env.SWF_URL + '/go_full.swf', // data: 'cc.swf',
-				type: 'application/x-shockwave-flash', id: 'Studio', width: '100%', height: '100%',
+				data: process.env.SWF_URL + '/go_full.swf',
+				type: 'application/x-shockwave-flash', width: '100%', height: '100%',
 			};
 			params = {
 				flashvars: {
-					'apiserver': '/', 'storePath': process.env.STORE_URL + '/<store>',
-					'clientThemePath': process.env.CLIENT_URL + '/<client_theme>', 'tray': 'custom',
-					'themeId': 'business', 'ut': 60, 'bs': 'default', 'appCode': 'go', 'page': '', 'siteId': 'go',
-					'm_mode': 'school', 'isLogin': 'Y', 'isEmbed': 1, 'ctc': 'go', 'tlang': 'en_US',
+					'apiserver': '/', 'storePath': process.env.STORE_URL + '/<store>', 'isEmbed': 1, 'ctc': 'go',
+					'ut': 60, 'bs': 'default', 'appCode': 'go', 'page': '', 'siteId': 'go', 'lid': 13, 'isLogin': 'Y', 'retut': 1,
+					'clientThemePath': process.env.CLIENT_URL + '/<client_theme>', 'themeId': 'business', 'tlang': 'en_US',
+					'presaveId': presave, 'goteam_draft_only': 1, 'isWide': 1, 'nextUrl': '/html/list.html',
 				},
 				allowScriptAccess: 'always',
-				movie: process.env.SWF_URL + '/go_full.swf', // 'http://localhost/go_full.swf'
 			};
+			sessions.set({ movieId: presave }, req);
 			break;
-
+		}
 		default:
 			return;
 	}
