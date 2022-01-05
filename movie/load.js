@@ -2,6 +2,7 @@ const caché = require('./caché');
 const fUtil = require('../fileUtil');
 const base = Buffer.alloc(1, 0);
 const fs = require('fs');
+const movie = require('./main'); 
 
 module.exports = function (req, res, url) {
 	switch (req.method) {
