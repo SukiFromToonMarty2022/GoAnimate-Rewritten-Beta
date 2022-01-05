@@ -7,7 +7,7 @@ module.exports = function (voiceName, text) {
 	return new Promise((res, rej) => {
 		const voice = voices[voiceName];
 		switch (voice.source) {
-			case 'polly':
+			case 'polly': {
 				var buffers = [];
 				var req = https.request({
 					hostname: 'pollyvoices.com',
@@ -27,7 +27,8 @@ module.exports = function (voiceName, text) {
 				req.write(qs.encode({ text: text, voice: voice.arg }));
 				req.end();
 				break;
-			case 'cepstral':
+			}
+			case 'cepstral': {
 				https.get('https://www.cepstral.com/en/demos', r => {
 					const cookie = r.headers['set-cookie'];
 					var q = qs.encode({
@@ -52,7 +53,8 @@ module.exports = function (voiceName, text) {
 					});
 				});
 				break;
-			case 'vocalware':
+			}
+			case 'vocalware': {
 				var q = qs.encode({
 					EID: voice.arg[0],
 					LID: voice.arg[1],
