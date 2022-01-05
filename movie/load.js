@@ -26,17 +26,14 @@ module.exports = function (req, res, url) {
 		}
 
 		case 'POST': {
-			if (!url.path.startsWith('/goapi/getMovie')) return;
-
+			if (!url.path.startsWith('/goapi/getMovie/')) return;
 			res.setHeader('Content-Type', 'application/zip');
-			movie.loadZip(url.query.movieId).then(b => {
-				if (req.method == 'POST')
-					b = Buffer.concat([base, b]);
-				res.end(b);
-			});
+			var b = Buffer.concat([base, b]);
+			movie.loadZip(url.query.movieId).then(b =>
+				res.end(Buffer.concat([base, b])) 
+			).catch(e => res.end(b));
 			return true;
 		}
-		default:
-			return;
+		default: return;
 	}
-};
+}
