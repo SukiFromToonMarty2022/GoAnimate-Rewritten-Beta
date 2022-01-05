@@ -1,4 +1,4 @@
-const folder = process.env.PREVIEW_FOLDER;
+const folder = process.env.SAVED_FOLDER;
 const fs = require('fs');
 module.exports = {
 	push(dataStr, ip) {
