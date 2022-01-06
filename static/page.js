@@ -72,11 +72,12 @@ module.exports = function (req, res, url) {
 					'ut': 60, 'bs': 'default', 'appCode': 'go', 'page': '', 'siteId': 'go', 'lid': 13, 'isLogin': 'Y', 'retut': 1,
 					'clientThemePath': process.env.CLIENT_URL + '/<client_theme>', 'themeId': 'business', 'tlang': 'en_US',
 					'presaveId': presave, 'goteam_draft_only': 1, 'isWide': 1, 'nextUrl': '/html/list.html', 'autostart': '1',
+					'tutorial': 'neverDisplay',
 				},
 				allowScriptAccess: 'always',
 			};
 			sessions.set({ movieId: presave }, req);
-			script += `interactiveTutorial={neverDisplay:function(){return true}};function studioLoaded(arg){console.log(arg)}function initPreviewPlayer(xml){console.log('Starting preview transfer.');var a=xml.split('');function f(){var s=a.splice(0,5e5);if(s.length)fetch('/save_preview/',{method:'POST',body:s.join('')}).then(f);else window.open('/previewWindow?autostart=${params.flashvars.autostart}','MsgWindow','width=1280,height=720,left='+(screen.width/2-640)+',top='+(screen.height/2-360))};f()};function exitStudio(){window.location='/html/list.html'}const fu=document.getElementById('fileupload'),sub=document.getElementById('submit');function showImporter(){fu.click()}fu.addEventListener('change',evt=>(evt.target.files[0]!=undefined)&&sub.click(),false);`;
+			script += `interactiveTutorial={${params.flashvars.tutorial}:function(){return true}};function studioLoaded(arg){console.log(arg)}function initPreviewPlayer(xml){console.log('Starting preview transfer.');var a=xml.split('');function f(){var s=a.splice(0,5e5);if(s.length)fetch('/save_preview/',{method:'POST',body:s.join('')}).then(f);else window.open('/previewWindow?autostart=${params.flashvars.autostart}','MsgWindow','width=1280,height=720,left='+(screen.width/2-640)+',top='+(screen.height/2-360))};f()};function exitStudio(){window.location='/html/list.html'}const fu=document.getElementById('fileupload'),sub=document.getElementById('submit');function showImporter(){fu.click()}fu.addEventListener('change',evt=>(evt.target.files[0]!=undefined)&&sub.click(),false);`;
 			break;
 		}
 
