@@ -7,7 +7,8 @@ module.exports = function (req, res, url) {
 	if (req.method != 'POST' || url.path != '/upload_movie') return;
 	new formidable.IncomingForm().parse(req, (e, f, files) => {
 		const path = files.import.path, buffer = fs.readFileSync(path);
-		parse.unpackXml(buffer);
+		const numId = fUtil.getNextFileId('movie-', '.xml');
+		parse.unpackXml(buffer, numId);
 		fs.unlinkSync(path);
 
 		res.statusCode = 302;
