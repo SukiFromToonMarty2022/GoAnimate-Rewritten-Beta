@@ -21,7 +21,7 @@ module.exports = function (req, res, url) {
 	if (req.method != 'GET') return;
 	const query = url.query;
 
-	var attrs, params, title;
+	var attrs, params, title, script;
 	switch (url.pathname) {
 		case '/cc': {
 			title = 'Character Creator';
@@ -39,6 +39,7 @@ module.exports = function (req, res, url) {
 				allowScriptAccess: 'always',
 				movie: process.env.SWF_URL + '/cc.swf', // 'http://localhost/cc.swf'
 			};
+			script += `<script>function characterSaved(){window.location='/html/list.html}</script>`;
 			break;
 		}
 
@@ -56,10 +57,11 @@ module.exports = function (req, res, url) {
 					'apiserver': '/', 'storePath': process.env.STORE_URL + '/<store>', 'isEmbed': 1, 'ctc': 'go',
 					'ut': 60, 'bs': 'default', 'appCode': 'go', 'page': '', 'siteId': 'go', 'lid': 13, 'isLogin': 'Y', 'retut': 1,
 					'clientThemePath': process.env.CLIENT_URL + '/<client_theme>', 'themeId': 'business', 'tlang': 'en_US',
-					'presaveId': presave, 'goteam_draft_only': 1, 'isWide': 1, 'nextUrl': '/html/list.html',
+					'presaveId': presave, 'goteam_draft_only': 1, 'isWide': 1, 'nextUrl': '/html/list.html', 'autostart': '1',
 				},
 				allowScriptAccess: 'always',
 			};
+			script += `<iframe style='display:none'name='dummy'></iframe><form style='display:none'id='uploadbanner'enctype='multipart/form-data'method='post'action='/save_asset/'target='dummy'><input id='fileupload'name='import'type='file'/><input type='submit'value='submit'id='submit'/></form><script>interactiveTutorial={${params.flashvars.tutorial}:function(){return true}};function studioLoaded(arg){console.log(arg)}function initPreviewPlayer(xml){console.log('Starting preview transfer.');var a=xml.split('');function f(){var s=a.splice(0,5e5);if(s.length)fetch('/save_preview/',{method:'POST',body:s.join('')}).then(f);else window.open('/previewWindow?autostart=${params.flashvars.autostart}','MsgWindow','width=1280,height=720,left='+(screen.width/2-640)+',top='+(screen.height/2-360))};f()};function exitStudio(){window.location='/html/list.html'}const fu=document.getElementById('fileupload'),sub=document.getElementById('submit');function showImporter(){fu.click()}fu.addEventListener('change',evt=>(evt.target.files[0]!=undefined)&&sub.click(),false);</script>`;
 			sessions.set(presave, ip);
 			break;
 		}
@@ -94,6 +96,7 @@ module.exports = function (req, res, url) {
 				},
 				allowScriptAccess: 'always',
 			};
+			script += `<script>function retrievePreviewPlayerData(){var r=new XMLHttpRequest();r.open('GET','/load_preview',false);r.send(null);return r.responseText}</script>`;
 			break;
 		}
 
@@ -103,6 +106,6 @@ module.exports = function (req, res, url) {
 	res.setHeader('Content-Type', 'text/html; charset=UTF-8');
 	Object.assign(params.flashvars, query);
 	res.end(`<script>document.title='${title}',flashvars=${JSON.stringify(params.flashvars)}</script><body style="margin:0px">${toObjectString(attrs, params)
-		}</body>${stuff.pages[url.pathname] || ''}`);
+		}</body>${script}`);
 	return true;
 }
