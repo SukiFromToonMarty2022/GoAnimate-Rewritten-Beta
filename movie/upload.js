@@ -12,7 +12,8 @@ module.exports = function (req, res, url) {
 		fs.unlinkSync(path);
 
 		res.statusCode = 302;
-		res.setHeader('Location', '/html/list.html');
+		const url = `javascript:window.location.reload()`;
+		res.setHeader('Location', url);
 		res.end();
 	});
 	return true;
