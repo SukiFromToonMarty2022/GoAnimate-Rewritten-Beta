@@ -21,7 +21,7 @@ module.exports = function (req, res, url) {
 	if (req.method != 'GET') return;
 	const query = url.query;
 
-	var attrs, params, title, script;
+	var attrs, params, title;
 	switch (url.pathname) {
 		case '/previewWindow': {
 			title = 'Player';
