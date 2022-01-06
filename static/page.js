@@ -27,7 +27,7 @@ module.exports = function (req, res, url) {
 			title = 'Player';
 			attrs = {
 				data: process.env.SWF_URL + '/player.swf',
-				type: 'application/x-shockwave-flash', width: '100%', height: '100%',
+				type: 'application/x-shockwave-flash', width: '100%', height: '100%', allowFullScreen: 'true',
 			};
 			params = {
 				flashvars: {
@@ -83,7 +83,7 @@ module.exports = function (req, res, url) {
 			title = 'Player';
 			attrs = {
 				data: process.env.SWF_URL + '/player.swf',
-				type: 'application/x-shockwave-flash', width: '100%', height: '100%',
+				type: 'application/x-shockwave-flash', width: '100%', height: '100%', allowFullScreen: 'true',
 			};
 			params = {
 				flashvars: {
