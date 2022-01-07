@@ -19,7 +19,6 @@ const mvl = require('./movie/load');
 const mvL = require('./movie/list');
 const mvm = require('./movie/meta');
 const mvs = require('./movie/save');
-const svs = require('./movie/save-starter');
 const mvt = require('./movie/thmb');
 const thL = require('./theme/list');
 const thl = require('./theme/load');
@@ -46,7 +45,6 @@ const functions = [
 	mvl,
 	mvs,
 	mvt,
-	svs,
 	tsv,
 	asu,
 	mvu,
