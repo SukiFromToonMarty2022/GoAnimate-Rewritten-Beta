@@ -10,3 +10,5 @@ npm start
 **When done, go to your web browser and navigate to `localhost`.**
 
 Due to copyright issues, the EvenNode server has been shut down.
+
+This branch is ment for development with the stable video player & editor working.
