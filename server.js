@@ -1,6 +1,8 @@
 const env = Object.assign(process.env, require("./env"), require("./config"));
 
 const http = require("http");
+const mvu = require("./playUploadedVideoByDefault");
+const pvu = require("./movie/upload");
 const pmc = require("./character/premade");
 const chl = require("./character/load");
 const chs = require("./character/save");
@@ -23,7 +25,7 @@ const tsl = require("./tts/load");
 const evt = require("./events");
 const url = require("url");
 
-const functions = [mvL, pmc, asl, evt, chl, thl, thL, chs, asL, tsl, ast, mvm, mvl, mvs, mvt, tsv, asu, mvu, stp, stl];
+const functions = [mvL, pmc, asl, evt, chl, thl, thL, chs, asL, tsl, ast, mvm, mvl, mvs, mvt, tsv, asu, mvu, stp, stl, mvu, pvu];
 
 module.exports = http
 	.createServer((req, res) => {
