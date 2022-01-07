@@ -4,12 +4,12 @@ const nodezip = require('node-zip');
 const fUtil = require('../fileUtil');
 const xmldoc = require('xmldoc');
 const fs = require('fs');
-var cache = {}, filePath;
+var caché = {};
 
 function generateId() {
 	var id;
 	do id = ('' + Math.random()).replace('.', '');
-	while (cache[id]);
+	while (caché[id]);
 	return id;
 }
 
@@ -39,21 +39,25 @@ async function parseMovie(zip, buffer) {
 					break;
 
 				case 'char':
-					var v = piece.childNamed('action').val.split('.'), id = Number.parseInt(v[1]);
-					if (v[0] != 'ugc') themes[v[0]] = true; v.splice(1, 0, piece.name); chars[id] = true;
+					var v = piece.childNamed('action').val.split('.');
+					var id = Number.parseInt(v[1]);
+					v.splice(1, 0, piece.name);
+					chars[id] = true;
+					if (v[0] != 'ugc')
+						themes[v[0]] = true;
+
 					switch (v[v.length - 1]) {
 						case 'xml':
-							var c = await char(id);
-							fUtil.addToZip(zip, `${v[0]}.${v[2]}.xml`, Buffer.from(c));
+							var c = await char(id), n = `${v[0]}.${v[2]}.xml`;
+							fUtil.addToZip(zip, n, Buffer.from(c));
 							break;
 					};
 					break;
 			};
 		}
 	}
-	const charKs = Object.keys(chars);
 	const themeKs = Object.keys(themes);
-	themeKs.forEach(t => fUtil.addToZip(zip, `${t}.xml`, fs.readFileSync(`_THEMES/${t}.xml`)));
+	themeKs.forEach(t => fUtil.addToZip(zip, `${t}.xml`, fs.readFileSync(`themes/${t}.xml`)));
 	fUtil.addToZip(zip, 'themelist.xml', Buffer.from(`<?xml version="1.0" encoding="utf-8"?><themes>${
 		themeKs.map(t => `<theme>${t}</theme>`).join('')}</themes>`));
 
@@ -61,50 +65,64 @@ async function parseMovie(zip, buffer) {
 }
 
 module.exports = {
-	load(path) {
-		if (!fs.existsSync(path))
-			return Promise.reject();
-		cache = {}, filePath = path;
-		const zip = nodezip.create();
-		return parseMovie(zip, fs.readFileSync(path));
+	load(id) {
+		caché[id] = {};
+		if (id.toLowerCase().startsWith('e-')) {
+			var v = fs.readFileSync(`examples/${id.substr(2)}.zip`);
+			if (v[0] != 80) v = v.subarray(1);
+			return Promise.resolve(v);
+		}
+		else if (!isNaN(Number.parseInt(id))) {
+			const zip = nodezip.create();
+			const filePath = fUtil.getFileIndex('movie-', '.xml', id);
+			if (!fs.existsSync(filePath)) return Promise.reject();
+			return parseMovie(zip, fs.readFileSync(filePath));
+		}
 	},
-	save(path, buffer) {
+	saveXmlStream(stream, id) {
 		return new Promise(res => {
-			const zip = nodezip.unzip(buffer);
-
+			var ws = fs.createWriteStream(id ?
+				fUtil.getFileIndex('movie-', '.xml', id, 7) :
+				fUtil.getNextFile('movie-', '.xml', 7));
 			var data = '';
-			if (path != filePath)
-				cache = {}, filePath = path;
 
-			const stream = zip['movie.xml'].toReadStream();
-			stream.on('data', b => data += b);
+			stream.on('data', b => {
+				ws.write(b);
+				data += b;
+			});
 			stream.on('end', () => {
-				var finalData = data.substr(0, data.length - 7);
-				var count = 0; for (var i in zip.entries()) count++;
-				if (count > 1)
-					for (var i in zip.entries()) {
-						var e = zip[i];
-						if (!e || e.name == 'movie.xml') {
-							count--; continue;
-						}
-						const chunks = [], str = e.toReadStream();
-						str.on('data', b => chunks.push(b));
-						str.on('end', () => {
-							finalData += `< asset name = "${e.name}" > ${Buffer.concat(chunks)}</asset > `;
-							if (!--count) fs.writeFile(path, finalData += `</film > `, res);
-						});
-					}
-				else
-					fs.writeFile(path, finalData += `</film > `, res);
+				data.substr(0, data.length - 7);
+				const t = caché[id];
+
+				var finalData = '';
+				for (const name in t)
+					if (data.includes(`"${name}"`))
+						finalData += `<asset name="${name}">${t[name]}</asset>`;
+					else
+						delete t[name];
+				finalData += `</film>`;
+				delete data;
+
+				ws.write(finalData, () => {
+					ws.close();
+					res(finalData);
+				});
 			});
 		});
 	},
-	addAsset(buffer) {
+	save(buffer, id) {
+		const zip = nodezip.unzip(buffer);
+		saveXmlStream(zip['movie.xml'].toReadStream(), id);
+	},
+	addAsset(movieId, buffer) {
 		const id = generateId();
-		cache[id] = buffer;
+		if (!caché[movieId])
+			caché[movieId] = {};
+		var t = caché[movieId];
+		t[id] = buffer;
 		return id;
 	},
-	getAsset(id) {
-		return cache[id];
+	getAsset(movieId, assetId) {
+		return caché[movieId][assetId];
 	}
 }
