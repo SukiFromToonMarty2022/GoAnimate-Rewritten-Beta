@@ -1,10 +1,10 @@
-const char = require('../character/main');
+const char = require('./chars');
 const source = process.env.CLIENT_URL;
 const header = process.env.XML_HEADER;
 const store = process.env.STORE_URL;
 const fUtil = require('../fileUtil');
 const xmldoc = require('xmldoc');
-const get = require('../request/Get');
+const get = require('../request/get');
 const fs = require('fs');
 
 module.exports = async function (zip, buffer, cachéRef) {
