@@ -100,7 +100,7 @@ module.exports = function (req, res, url) {
 	}
 	res.setHeader('Content-Type', 'text/html; charset=UTF-8');
 	Object.assign(params.flashvars, query);
-	res.end(`<script>document.title='${title}',flashvars=${JSON.stringify(params.flashvars)}</script><body onload="retrievePlayerData()" style="margin:0px">${toObjectString(attrs, params)
+	res.end(`<script>document.title='${title}',flashvars=${JSON.stringify(params.flashvars)}</script><body style="margin:0px">${toObjectString(attrs, params)
 		}${stuff.pages[url.pathname] || ''}</body>`);
 	return true;
 }
