@@ -6,6 +6,7 @@
 			</div>
 			<div>
 				<a class="button_small" onclick="document.getElementById('file').click()">UPLOAD A MOVIE</a>
+				<a onclick="document.getElementById('playVideo').click()" class="button_small">UPLOAD MOVIE AND PLAY VIDEO</a>
 				<div class="char_dropdown button_small">
 					<div>CREATE A CHARACTER</div>
 					<menu>
@@ -61,6 +62,9 @@
 	</table>
 	<form enctype='multipart/form-data' action='/upload_movie' method='post'>
 		<input id='file' type="file" onchange="this.form.submit()" name='import' />
+	</form>
+	<form enctype='multipart/form-data' action='/play_uploaded_video' method='post'>
+		<input id='playVideo' type="file" onchange="this.form.submit()" name='import' />
 	</form>
 	<script>
 		const closeReq = new XMLHttpRequest();
