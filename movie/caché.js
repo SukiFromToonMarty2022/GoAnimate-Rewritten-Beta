@@ -13,7 +13,7 @@ function generateId() {
 	return id;
 }
 
-async function parseMovie(zip, buffer) {
+function parseMovie(zip, buffer) {
 	const chars = {}, themes = { common: true };
 	fUtil.addToZip(zip, 'movie.xml', buffer);
 	const xml = new xmldoc.XmlDocument(buffer);
