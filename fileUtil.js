@@ -40,13 +40,7 @@ module.exports = {
 	 */
 	getNextFileId(s, suf = '.xml', l = 7) {
 		const indicies = this.getValidFileIndicies(s, suf, l);
-	        return indicies.length ? indicies[indicies.length - 1] + 1 : 0;
-	},
-	getLastFileId(s, suf = '.xml', l = 7) {
-		const indicies = this.getValidFileIndicies(s, suf, l);
-		const regex = new RegExp(`${s}[0-9]{${l}}${suf}$`);
-		const list = fs.readdirSync(folder).filter(v => v && regex.test(v));
-		return indicies.length ? Number.parseInt(list.pop().substr(s.length, l)) : -1;
+		return indicies.length ? indicies[indicies.length - 1] + 1 : 0;
 	},
 	/**
 	 * @param {string} s

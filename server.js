@@ -5,8 +5,6 @@ const env = Object.assign(process.env,
 const http = require('http');
 const pmc = require('./character/premade');
 const chl = require('./character/load');
-const previewLoad = require('./movie/loadPreviewer');
-const previewSave = require('./movie/savePreview');
 const chs = require('./character/save');
 const mvu = require('./movie/upload');
 const asu = require('./asset/upload');
@@ -29,8 +27,6 @@ const url = require('url');
 
 const functions = [
 	mvL,
-	previewLoad,
-	previewSave,
 	pmc,
 	asl,
 	evt,

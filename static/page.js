@@ -1,4 +1,4 @@
-const sessions = require('../data/sessions-preview');
+const sessions = require('../data/sessions');
 const fUtil = require('../fileUtil');
 const stuff = require('./info');
 
@@ -23,22 +23,6 @@ module.exports = function (req, res, url) {
 
 	var attrs, params, title;
 	switch (url.pathname) {
-		case '/previewWindow': {
-			title = 'Player';
-			attrs = {
-				data: process.env.SWF_URL + '/player.swf',
-				type: 'application/x-shockwave-flash', width: '100%', height: '100%', allowFullScreen: 'true',
-			};
-			params = {
-				flashvars: {
-					'apiserver': '/', 'storePath': process.env.STORE_URL + '/<store>', 'ut': 60,
-					'autostart': 1, 'isWide': 1, 'clientThemePath': process.env.CLIENT_URL + '/<client_theme>',
-					'isInitFromExternal': '1',
-				},
-				allowScriptAccess: 'always',
-			};
-			break;
-		}
 		case '/cc': {
 			title = 'Character Creator';
 			attrs = {
@@ -83,7 +67,7 @@ module.exports = function (req, res, url) {
 			title = 'Player';
 			attrs = {
 				data: process.env.SWF_URL + '/player.swf',
-				type: 'application/x-shockwave-flash', width: '100%', height: '100%', allowFullScreen: 'true',
+				type: 'application/x-shockwave-flash', width: '100%', height: '100%',
 			};
 			params = {
 				flashvars: {
@@ -101,6 +85,6 @@ module.exports = function (req, res, url) {
 	res.setHeader('Content-Type', 'text/html; charset=UTF-8');
 	Object.assign(params.flashvars, query);
 	res.end(`<script>document.title='${title}',flashvars=${JSON.stringify(params.flashvars)}</script><body style="margin:0px">${toObjectString(attrs, params)
-		}${stuff.pages[url.pathname] || ''}</body>`);
+		}</body>${stuff.pages[url.pathname] || ''}`);
 	return true;
 }
