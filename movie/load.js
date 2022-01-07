@@ -1,3 +1,4 @@
+const caché = require('./caché');
 const fUtil = require('../fileUtil');
 const base = Buffer.alloc(1, 0);
 const fs = require('fs');
@@ -22,9 +23,8 @@ module.exports = function (req, res, url) {
 			if (!url.path.startsWith('/goapi/getMovie/')) return;
 			res.setHeader('Content-Type', 'application/zip');
 			
-			movie.load(url.query.movieId).then(b => {
-				if (req.method == 'POST')
-					b = Buffer.concat([base, b]);
+			caché.load(url.query.movieId).then(b => {
+				b = Buffer.concat([base, b]);
 				res.end(b);
 			});
 			return true;
