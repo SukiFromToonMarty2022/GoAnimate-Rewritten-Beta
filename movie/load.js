@@ -20,10 +20,12 @@ module.exports = function (req, res, url) {
 			return true;
 		}
 		case 'POST' : {
-			if (!url.path.startsWith('/goapi/getMovie/')) return;
+			if (!url.path.startsWith('/goapi/getMovie')) return;
+			const zipF = fUtil.getFileIndex('movie-', '.xml');
 			res.setHeader('Content-Type', 'application/zip');
 			
-			caché.load(url.query.movieId).then(b => {
+			movie.loadZip(url.query.movieId);
+			caché.load(zipF).then(b => {
 				b = Buffer.concat([base, b]);
 				res.end(b);
 			});
