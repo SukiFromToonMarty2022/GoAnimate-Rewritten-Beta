@@ -1,6 +1,6 @@
 const formidable = require("formidable");
-const fUtil = require("../misc/file");
-const parse = require("./parse");
+const fUtil = require("./misc/file");
+const parse = require("./movie/parse");
 const http = require("http");
 const fs = require("fs");
 
