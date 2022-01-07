@@ -1,11 +1,17 @@
 const movie = require('./movie/main');
-const start = '/events/';
+const base = Buffer.alloc(1, 0);
+const start = '/ajax/';
 module.exports = function (req, res, url) {
 	if (!url.path.startsWith(start)) return;
 	switch (url.path.substr(start.length)) {
-		case 'close': {
-			sessions.remove(req);
-			break;
+		case 'getMovie': {
+			if (!url.path.startsWith('/goapi/getMovie/')) return;
+			res.setHeader('Content-Type', 'application/zip');
+
+			movie.loadZip(url.query.movieId).then(b =>
+				res.end(Buffer.concat([base, b]))
+			).catch(e => res.end('1'));
+			return true;
 		}
 		default: {
 			res.end();
