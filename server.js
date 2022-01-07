@@ -7,7 +7,6 @@ const chs = require("./character/save");
 const mvu = require("./movie/upload");
 const asu = require("./asset/upload");
 const stl = require("./static/load");
-const sou = require("./sound/save");
 const stp = require("./static/page");
 const asl = require("./asset/load");
 const asL = require("./asset/list");
@@ -24,7 +23,7 @@ const tsl = require("./tts/load");
 const evt = require("./events");
 const url = require("url");
 
-const functions = [mvL, pmc, asl, evt, chl, thl, thL, chs, asL, tsl, ast, mvm, mvl, mvs, mvt, tsv, asu, mvu, stp, sou, stl];
+const functions = [mvL, pmc, asl, evt, chl, thl, thL, chs, asL, tsl, ast, mvm, mvl, mvs, mvt, tsv, asu, mvu, stp, stl];
 
 module.exports = http
 	.createServer((req, res) => {
