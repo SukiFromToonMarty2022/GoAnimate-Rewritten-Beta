@@ -11,6 +11,7 @@ const store = process.env.STORE_URL;
 const xmldoc = require('xmldoc');
 const fs = require('fs');
 const cache = require('../data/caché');
+var filePath;
 
 
 function generateId() {
