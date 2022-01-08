@@ -10,7 +10,8 @@ const nodezip = require('node-zip');
 const store = process.env.STORE_URL;
 const xmldoc = require('xmldoc');
 const fs = require('fs');
-const cache = require('../data/caché'), filePath;
+const caché = require('../data/caché');
+var cache = {}, filePath;
 
 
 function generateId() {
