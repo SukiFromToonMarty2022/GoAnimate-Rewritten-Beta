@@ -22,7 +22,7 @@ module.exports = function (req, res, url) {
 		case 'POST': {
 			// load starters
 			const mid = url.query.presaveId;
-			if (!url.path.startsWith('/goapi/getMovie/?movieId='`${mid}`'&userId=null&ut=50'))) return;
+			if (!url.path.startsWith('/goapi/getMovie/?movieId='))`${mid}`('&userId=null&ut=50') return;
 			const zipF = fUtil.getFileIndex('movie-', '.xml', url.query.movieId);
 			res.setHeader('Content-Type', 'application/zip');
 			
@@ -32,7 +32,7 @@ module.exports = function (req, res, url) {
 			});
 			// load and edit videos
 			const vid = url.query.movieId;
-			if (!url.path.startsWith("/goapi/getMovie/?movieId="`${vid}`"&userId=null&ut=60"))) return;
+			if (!url.path.startsWith("/goapi/getMovie/?movieId="))`${vid}`("&userId=null&ut=60") return;
 			res.setHeader("Content-Type", "application/zip");
 
 			movie
