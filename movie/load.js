@@ -5,15 +5,6 @@ const fs = require('fs');
 const movie = require('./main'); 
 
 module.exports = function (req, res, url) {
-	if (url.path != '/player') {
-		if (!url.path.startsWith('/goapi/getMovie/')) return;
-		res.setHeader('Content-Type', 'application/zip');
-		
-		movie.loadZip(url.query.movieId).then(b =>
-						      res.end(Buffer.concat([base, b]))
-						     ).catch(e => res.end('1'));
-		return true;
-	}
 	switch (req.method) {
 		case 'GET': {
 			const match = req.url.match(/\/movies\/([^.]+)(?:\.(zip|xml))?$/);
