@@ -91,7 +91,7 @@ async function parseMovie(zip, buffer, thumb = null, movieId) {
 				res(Buffer.concat(xmlBuffers));
 			});
 		});
-	},
+	}
 }
 module.exports = {
 	load(path) {
