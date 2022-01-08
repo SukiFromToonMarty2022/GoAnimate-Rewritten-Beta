@@ -4,7 +4,19 @@ const base = Buffer.alloc(1, 0);
 const fs = require('fs');
 const movie = require('./main'); 
 
+function mid(url) {
+	fUtil.getNextFile('movie-', '.xml', url.query.presaveId);
+}
+function vid(url) {
+	fUtil.getFileIndex('movie-', '.xml', url.query.movieId);
+}
 module.exports = function (req, res, url) {
+	function mid() {
+		fUtil.getNextFile('movie-', '.xml', url.query.presaveId);
+	}
+	function vid() {
+		fUtil.getFileIndex('movie-', '.xml', url.query.movieId);
+	}
 	switch (req.method) {
 		case 'GET': {
 			const match = req.url.match(/\/movies\/([^.]+)(?:\.(zip|xml))?$/);
@@ -21,7 +33,6 @@ module.exports = function (req, res, url) {
 		}
 		case 'POST': {
 			// load starters
-			const mid = url.query.presaveId;
 			if (!url.path.startsWith('/goapi/getMovie/?movieId='))`${mid}`('&userId=null&ut=50')
 			const zipF = fUtil.getFileIndex('movie-', '.xml', url.query.movieId);
 			res.setHeader('Content-Type', 'application/zip');
@@ -31,7 +42,6 @@ module.exports = function (req, res, url) {
 				res.end(b);
 			});
 			// load and edit videos
-			const vid = url.query.movieId;
 			if (!url.path.startsWith("/goapi/getMovie/?movieId="))`${vid}`("&userId=null&ut=60")
 			res.setHeader("Content-Type", "application/zip");
 			movie.loadZip(url.query.movieId).then((b) => res.end(Buffer.concat([base, b]))).catch(() => res.end("1"));
