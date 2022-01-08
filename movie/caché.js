@@ -94,119 +94,117 @@ async function parseMovie(zip, buffer, mId = null) {
 				}
 
 				case "scene": {
-					for (var pK in piece.children) {
-						var tag = piece.name;
-						if (tag == "effectAsset") {
-							tag = "effect";
+					var tag = piece.name;
+					if (tag == "effectAsset") {
+						tag = "effect";
+					}
+
+					switch (tag) {
+						case "durationSetting":
+						case "trans":
+							break;
+						case "bg":
+						case "effect":
+						case "prop": {
+							var file = piece.childNamed("file");
+							if (!file) continue;
+							var val = file.val;
+							var pieces = val.split(".");
+
+							if (pieces[0] == "ugc") {
+								// TODO: Make custom props load.
+							} else {
+								var ext = pieces.pop();
+								pieces.splice(1, 0, tag);
+								pieces[pieces.length - 1] += `.${ext}`;
+
+								var fileName = pieces.join(".");
+								if (!zip[fileName]) {
+									var buff = await get(`${store}/${pieces.join("/")}`);
+									fUtil.addToZip(zip, fileName, buff);
+									themes[pieces[0]] = true;
+								}
+							}
+							break;
 						}
+						case 'char': {
+							const val = piece.childNamed('action').val;
+							const pieces = val.split('.');
 
-						switch (tag) {
-							case "durationSetting":
-							case "trans":
-								break;
-							case "bg":
-							case "effect":
-							case "prop": {
-								var file = piece.childNamed("file");
-								if (!file) continue;
-								var val = file.val;
-								var pieces = val.split(".");
+							let theme, fileName, buffer;
+							switch (pieces[pieces.length - 1]) {
+								case 'xml': {
+									theme = pieces[0];
+									const id = pieces[1];
 
-								if (pieces[0] == "ugc") {
-									// TODO: Make custom props load.
-								} else {
-									var ext = pieces.pop();
-									pieces.splice(1, 0, tag);
-									pieces[pieces.length - 1] += `.${ext}`;
-
-									var fileName = pieces.join(".");
-									if (!zip[fileName]) {
-										var buff = await get(`${store}/${pieces.join("/")}`);
-										fUtil.addToZip(zip, fileName, buff);
-										themes[pieces[0]] = true;
+									try {
+										buffer = await char.load(id);
+										const charTheme = await char.getTheme(id);
+										fileName = `${theme}.char.${id}.xml`;
+										if (theme == 'ugc')
+											ugcString += `<char id="${id}"cc_theme_id="${charTheme}"><tags/></char>`;
+									} catch (e) {
+										console.log(e);
 									}
+									break;
 								}
-								break;
+								case 'swf': {
+									theme = pieces[0];
+									const char = pieces[1];
+									const model = pieces[2];
+									const url = `${store}/${theme}/char/${char}/${model}.swf`;
+									fileName = `${theme}.char.${char}.${model}.swf`;
+									buffer = await get(url);
+									break;
+								}
 							}
-							case 'char': {
-								const val = piece.childNamed('action').val;
-								const pieces = val.split('.');
 
-								let theme, fileName, buffer;
-								switch (pieces[pieces.length - 1]) {
-									case 'xml': {
-										theme = pieces[0];
-										const id = pieces[1];
+							for (const ptK in piece.children) {
+								const part = piece.children[ptK];
+								if (!part.children) continue;
 
-										try {
-											buffer = await char.load(id);
-											const charTheme = await char.getTheme(id);
-											fileName = `${theme}.char.${id}.xml`;
-											if (theme == 'ugc')
-												ugcString += `<char id="${id}"cc_theme_id="${charTheme}"><tags/></char>`;
-										} catch (e) {
-											console.log(e);
-										}
+								var urlF, fileF;
+								switch (part.name) {
+									case 'head':
+										urlF = 'char';
+										fileF = 'prop';
 										break;
-									}
-									case 'swf': {
-										theme = pieces[0];
-										const char = pieces[1];
-										const model = pieces[2];
-										const url = `${store}/${theme}/char/${char}/${model}.swf`;
-										fileName = `${theme}.char.${char}.${model}.swf`;
-										buffer = await get(url);
+									case 'prop':
+										urlF = 'prop';
+										fileF = 'prop';
 										break;
-									}
+									default:
+										continue;
 								}
 
-								for (const ptK in piece.children) {
-									const part = piece.children[ptK];
-									if (!part.children) continue;
+								const file = part.childNamed('file');
+								const slicesP = file.val.split('.');
+								slicesP.pop(), slicesP.splice(1, 0, urlF);
+								const urlP = `${store}/${slicesP.join('/')}.swf`;
 
-									var urlF, fileF;
-									switch (part.name) {
-										case 'head':
-											urlF = 'char';
-											fileF = 'prop';
-											break;
-										case 'prop':
-											urlF = 'prop';
-											fileF = 'prop';
-											break;
-										default:
-											continue;
-									}
-
-									const file = part.childNamed('file');
-									const slicesP = file.val.split('.');
-									slicesP.pop(), slicesP.splice(1, 0, urlF);
-									const urlP = `${store}/${slicesP.join('/')}.swf`;
-
-									slicesP.splice(1, 1, fileF);
-									const fileP = `${slicesP.join('.')}.swf`;
-									fUtil.addToZip(zip, fileP, await get(urlP));
-								}
-
-								if (buffer) {
-									themes[theme] = true;
-									fUtil.addToZip(zip, fileName, buffer);
-								}
-								break;
+								slicesP.splice(1, 1, fileF);
+								const fileP = `${slicesP.join('.')}.swf`;
+								fUtil.addToZip(zip, fileP, await get(urlP));
 							}
-							case 'bubbleAsset': {
-								const bubble = piece.childNamed('bubble');
-								const text = bubble.childNamed('text');
-								const font = `${name2Font(text.attr.font)}.swf`;
-								const fontSrc = `${source}/go/font/${font}`;
-								fUtil.addToZip(zip, font, await get(fontSrc));
-								break;
+
+							if (buffer) {
+								themes[theme] = true;
+								fUtil.addToZip(zip, fileName, buffer);
 							}
+							break;
+						}
+						case 'bubbleAsset': {
+							const bubble = piece.childNamed('bubble');
+							const text = bubble.childNamed('text');
+							const font = `${name2Font(text.attr.font)}.swf`;
+							const fontSrc = `${source}/go/font/${font}`;
+							fUtil.addToZip(zip, font, await get(fontSrc));
+							break;
 						}
 					}
-					break;
-				};
-			}
+				}
+				break;
+			};
 		}
 	}
 	const charKs = Object.keys(chars);
