@@ -21,77 +21,76 @@ function generateId() {
 
 async function parseMovie(zip, buffer, thumb = null, movieId) {
 	return new Promise(res => {
-
+		
 		const pieces = [];
 		const stream = fUtil.addToZip(zip, 'movie.xml', buffer);
 		stream.on('data', b => pieces.push(b));
-			stream.on('end', async () => {
-				const time = new Date() - 0;
-				const main = Buffer.concat(pieces).slice(0, -7);
-				const xmlBuffers = [], assetHash = {};
-				const charMap = {}, charBuffers = {};
-				for (let c = 0, end; ; c = main.indexOf('ugc.', c) + 4) {
+		stream.on('end', async () => {
+			const time = new Date() - 0;
+			const main = Buffer.concat(pieces).slice(0, -7);
+			const xmlBuffers = [], assetHash = {};
+			const charMap = {}, charBuffers = {};
+			for (let c = 0, end; ; c = main.indexOf('ugc.', c) + 4) {
 					
-					if (c == 0) continue; else if (c == 3) {
-						xmlBuffers.push(main.subarray(end));
+				if (c == 0) continue; else if (c == 3) {
+					xmlBuffers.push(main.subarray(end));
+					break;
+				}
+
+				xmlBuffers.push(main.subarray(end, c));
+				const assetId = main.subarray(c, end =
+					main.indexOf('<', c + 1)).toString();
+				const index = assetId.indexOf('-');
+				const prefix = assetId.substr(0, index);
+				switch (prefix) {
+					case 'c':
+					case 'C': {
+						const dot = assetId.indexOf('.');
+						const charId = assetId.substr(0, dot);
+						const saveId = charMap[charId] =
+							charMap[charId] || `C-${c}-${time}`;
+						const remainder = assetId.substr(dot);
+						xmlBuffers.push(Buffer.from(saveId + remainder));
+						try {
+							charBuffers[saveId] = await char.load(charId);
+						} catch (e) { };
 						break;
 					}
-
-					xmlBuffers.push(main.subarray(end, c));
-					const assetId = main.subarray(c, end =
-						main.indexOf('<', c + 1)).toString();
-					const index = assetId.indexOf('-');
-					const prefix = assetId.substr(0, index);
-					switch (prefix) {
-						case 'c':
-						case 'C': {
-							const dot = assetId.indexOf('.');
-							const charId = assetId.substr(0, dot);
-							const saveId = charMap[charId] =
-								charMap[charId] || `C-${c}-${time}`;
-							const remainder = assetId.substr(dot);
-							xmlBuffers.push(Buffer.from(saveId + remainder));
-							try {
-								charBuffers[saveId] = await char.load(charId);
-							} catch (e) { };
-							break;
-						}
-						default: {
-							xmlBuffers.push(Buffer.from(assetId));
-							assetHash[assetId] = true;
-						}
+					default: {
+						xmlBuffers.push(Buffer.from(assetId));
+						assetHash[assetId] = true;
 					}
 				}
+			}
 
-				const assetBuffers = caché.getTable(movieId);
-				for (const aId in assetBuffers) {
-					if (!assetHash[aId]) continue;
-					if (useBase64(aId)) {
-						const assetString = assetBuffers[aId].toString('base64');
-						xmlBuffers.push(Buffer.from(`<asset id="${aId}">${assetString}</asset>`));
-					} else
-						xmlBuffers.push(Buffer.from(`<asset id="${aId}">${assetBuffers[aId]}</asset>`));
-				}
+			const assetBuffers = caché.getTable(movieId);
+			for (const aId in assetBuffers) {
+				if (!assetHash[aId]) continue;
+				if (useBase64(aId)) {
+					const assetString = assetBuffers[aId].toString('base64');
+					xmlBuffers.push(Buffer.from(`<asset id="${aId}">${assetString}</asset>`));
+				} else
+					xmlBuffers.push(Buffer.from(`<asset id="${aId}">${assetBuffers[aId]}</asset>`));
+			}
 
-				for (const id in charBuffers) {
-					const buff = charBuffers[id];
-					var start = header.length + 9;;
-					if (buff.includes('file_name'))
-						start = buff.indexOf('.xml', start) + 6;
-					const element = buff.subarray(start);
-					xmlBuffers.push(Buffer.from(`<cc_char file_name='ugc.char.${id}.xml' ${element}`));
-				}
+			for (const id in charBuffers) {
+				const buff = charBuffers[id];
+				var start = header.length + 9;;
+				if (buff.includes('file_name'))
+					start = buff.indexOf('.xml', start) + 6;
+				const element = buff.subarray(start);
+				xmlBuffers.push(Buffer.from(`<cc_char file_name='ugc.char.${id}.xml' ${element}`));
+			}
 
-				if (thumb) {
-					const thumbString = thumb.toString('base64');
-					xmlBuffers.push(Buffer.from(`<thumb>${thumbString}</thumb>`));
-				}
+			if (thumb) {
+				const thumbString = thumb.toString('base64');
+				xmlBuffers.push(Buffer.from(`<thumb>${thumbString}</thumb>`));
+			}
 
-				xmlBuffers.push(Buffer.from(`</film>`));
-				res(Buffer.concat(xmlBuffers));
-			});
+			xmlBuffers.push(Buffer.from(`</film>`));
+			res(Buffer.concat(xmlBuffers));
 		});
-	}
+	});
 }
 module.exports = {
 	load(path) {
