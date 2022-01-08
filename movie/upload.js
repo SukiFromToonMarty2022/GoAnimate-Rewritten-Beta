@@ -1,6 +1,6 @@
 const formidable = require('formidable');
-const parse = require('../data/parse');
-const fUtil = require('../fileUtil');
+const parse = require('./parse');
+const fUtil = require('./fileUtil');
 const fs = require('fs');
 
 module.exports = function (req, res, url) {
