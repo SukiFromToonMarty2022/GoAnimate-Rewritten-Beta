@@ -4,7 +4,7 @@ const base = Buffer.alloc(1, 0);
 const fs = require('fs');
 const movie = require('./main'); 
 
-module.exports = function (req, res, url) {
+module.exports = function (req, res, url, mid, vid) {
 	function mid() {
 		fUtil.getNextFile('movie-', '.xml', url.query.presaveId);
 	}
