@@ -1,7 +1,7 @@
 const char = require('./chars');
 const source = process.env.CLIENT_URL;
 const nodezip = require('node-zip');
-const fUtil = require('../fileUtil');
+const fUtil = require('./fileUtil');
 const xmldoc = require('xmldoc');
 const fs = require('fs');
 var cache = {}, filePath;
