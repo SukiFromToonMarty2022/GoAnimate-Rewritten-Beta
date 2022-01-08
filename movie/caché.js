@@ -72,7 +72,7 @@ async function parseMovie(zip, buffer) {
 		}
 	}
 	const themeKs = Object.keys(themes);
-	themeKs.forEach(t => fUtil.addToZip(zip, `${t}.xml`, fs.readFileSync(`themes/${t}.xml`)));
+	themeKs.forEach(t => fUtil.addToZip(zip, `${t}.xml`, fs.readFileSync(`_THEMES/${t}.xml`)));
 	fUtil.addToZip(zip, 'themelist.xml', Buffer.from(`<?xml version="1.0" encoding="utf-8"?><themes>${
 		themeKs.map(t => `<theme>${t}</theme>`).join('')}</themes>`));
 
