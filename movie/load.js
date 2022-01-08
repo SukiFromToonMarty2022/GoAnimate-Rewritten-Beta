@@ -30,7 +30,7 @@ module.exports = function (req, res, url) {
 				res.end(b);
 			});
 			return true;
-		} else {
+		 else
 			// load and edit videos
 			if (!url.path.startsWith("/goapi/getMovie/?ut=60")) return;
 			res.setHeader("Content-Type", "application/zip");
