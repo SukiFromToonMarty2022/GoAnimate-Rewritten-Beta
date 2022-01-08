@@ -20,7 +20,7 @@ module.exports = function (req, res, url) {
 			return true;
 		}
 		case 'POST': {
-			if (!url.path.startsWith('/goapi/getMovie/')) return;
+			if (!url.path.startsWith('/goapi/getMovie/?movieId=&userId=null&ut=50')) return;
 			const zipF = fUtil.getFileIndex('movie-', '.xml', url.query.movieId);
 			res.setHeader('Content-Type', 'application/zip');
 				
