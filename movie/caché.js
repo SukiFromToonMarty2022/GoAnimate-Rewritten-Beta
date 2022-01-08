@@ -91,7 +91,7 @@ async function parseMovie(zip, buffer, cachéRef) {
 	const themeKs = Object.keys(themes);
 	themeKs.forEach(t => {
 		if (t == 'ugc') return;
-		const file = fs.readFileSync(`themes/${t}.xml`);
+		const file = fs.readFileSync(`${themeFolder}/${t}.xml`);
 		fUtil.addToZip(zip, `${t}.xml`, file);
 	});
 
