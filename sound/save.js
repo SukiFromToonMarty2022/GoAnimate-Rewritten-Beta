@@ -1,5 +1,5 @@
 const loadPost = require("../misc/post_body");
-const character = require("./main");
+const movie = require("../asset/main");
 const http = require("http");
 
 /**
@@ -9,9 +9,10 @@ const http = require("http");
  * @returns {boolean}
  */
 module.exports = function (req, res, url) {
-	if (req.method != "POST" || url.path != "/goapi/saveCCCharacter/") return;
-	loadPost(req, res)
-		.then((data) => character.save(Buffer.from(data.body)))
-		.then((e) => (e ? res.end("10") : res.end("00")));
+	if (req.method != "POST" || (url.path != "/goapi/saveSound/")) return;
+	loadPost(req, res).then((data) => {
+		var bytes = Buffer.from(data.bytes, "base64");
+		movie.save(bytes, data.presaveId, "voiceover", "mp3");
+	});
 	return true;
 };
