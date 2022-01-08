@@ -123,7 +123,7 @@ module.exports = {
 		}
 		return array;
 	},
-	async meta(movieId) {
+	meta(movieId) {
 		if (!movieId.startsWith("m-")) return;
 		const n = Number.parseInt(movieId.substr(2));
 		const fn = fUtil.getFileIndex("movie-", ".xml", n);
