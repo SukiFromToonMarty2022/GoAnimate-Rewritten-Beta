@@ -1,5 +1,6 @@
 const caché = require('./caché');
 const fUtil = require('./fileUtil');
+const vPlay = require('./load-Vplayer');
 const base = Buffer.alloc(1, 0);
 const fs = require('fs');
 const movie = require('./main'); 
