@@ -4,12 +4,6 @@ const base = Buffer.alloc(1, 0);
 const fs = require('fs');
 const movie = require('./main'); 
 
-function mid(url) {
-	fUtil.getNextFile('movie-', '.xml', url.query.presaveId);
-}
-function vid(url) {
-	fUtil.getFileIndex('movie-', '.xml', url.query.movieId);
-}
 module.exports = function (req, res, url) {
 	function mid() {
 		fUtil.getNextFile('movie-', '.xml', url.query.presaveId);
