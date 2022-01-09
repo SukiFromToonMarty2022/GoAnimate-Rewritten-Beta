@@ -45,7 +45,7 @@ const folder = process.env.THEME_FOLDER;
 /**
  * @param {http.IncomingMessage} req
  * @param {http.ServerResponse} res
- * @param {import("url").UrlWithParsedQuery} url
+ * @param {string} url
  * @returns {boolean}
  */
 module.exports = function (req, res, url) {
