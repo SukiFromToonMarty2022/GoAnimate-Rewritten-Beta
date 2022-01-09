@@ -33,6 +33,7 @@
 						<div></div>
 						<a href="/cc?themeId=ninja&bs=default">Chibi Ninjas</a>
 						<div></div>
+						<a onclick="document.getElementById('file2').click()">Upload</a>
 
 					</menu>
 				</div>
@@ -64,6 +65,9 @@
 	</table>
 	<form enctype='multipart/form-data' action='/upload_movie' method='post'>
 		<input id='file' type="file" onchange="this.form.submit()" name='import' />
+	</form>
+	<form enctype='multipart/form-data' action='/upload_character' method='post'>
+		<input id='file2' type="file" onchange="this.form.submit()" name='import' />
 	</form>
 	<script>
 		const closeReq = new XMLHttpRequest();
