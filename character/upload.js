@@ -1,5 +1,5 @@
 const formidable = require('formidable');
-const parse = require('../movie/parse');
+const parse = require('./parse');
 const fUtil = require('../movie/fileUtil');
 const fs = require('fs');
 
