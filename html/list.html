@@ -5,7 +5,7 @@
 				<a href="./"><img src="https://freeanimate-rewriten.github.io/goanimate-rewritten/rewritten.png" /></a>
 			</div>
 			<div>
-				<a class="button_small" onclick="document.getElementById('file').click()">UPLOAD A MOVIE</a>
+				<a class="button_small" onclick="document.getElementById('file2').click()">UPLOAD A CHARACTER</a>
 				<div class="char_dropdown button_small">
 					<div>CREATE A CHARACTER</div>
 					<menu>
@@ -32,8 +32,6 @@
 						<a href="/cc?themeId=chibi&bs=default">Chibi Peepz</a>
 						<div></div>
 						<a href="/cc?themeId=ninja&bs=default">Chibi Ninjas</a>
-						<div></div>
-						<a onclick="document.getElementById('file2').click()">Upload</a>
 
 					</menu>
 				</div>
@@ -63,9 +61,6 @@
 			</tr>
 		</tfoot>
 	</table>
-	<form enctype='multipart/form-data' action='/upload_movie' method='post'>
-		<input id='file' type="file" onchange="this.form.submit()" name='import' />
-	</form>
 	<form enctype='multipart/form-data' action='/upload_character' method='post'>
 		<input id='file2' type="file" onchange="this.form.submit()" name='import' />
 	</form>
