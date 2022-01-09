@@ -6,12 +6,12 @@ const http = require("http");
 /**
  * @param {http.IncomingMessage} req
  * @param {http.ServerResponse} res
- * @param {import("url").UrlWithParsedQuery} url
+ * @param {string} url
  * @returns {boolean}
  */
 module.exports = function (req, res, url) {
 	if (req.method != "POST" || url.path != "/goapi/getTheme/") return;
-	loadPost(req, res).then(([data]) => {
+	loadPost(req, res).then((data) => {
 		var theme = data.themeId;
 		switch (theme) {
 			case "family":
