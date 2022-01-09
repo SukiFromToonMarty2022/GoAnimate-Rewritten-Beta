@@ -224,7 +224,7 @@ module.exports = function (req, res, url) {
 					<a onclick="document.getElementById('file2').click()">Character</a>
 				</nav>
 			</div>
-			<a href="/pages/html/create.html" class="button_big">CREATE</a>
+			<a href="/videomaker" class="button_big">CREATE</a>
 		</nav>
 	</header>
 	
