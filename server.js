@@ -7,6 +7,8 @@ const pmc = require('./character/premade');
 const chl = require('./character/load');
 const chs = require('./character/save');
 const ccu = require('./character/upload');
+const thm = require('./character/thmb');
+const red = require('./character/redirect');
 const asu = require('./asset/upload');
 const stl = require('./static/load');
 const stp = require('./static/page');
@@ -48,6 +50,8 @@ const functions = [
 	stp,
 	stl,
 	ccu,
+	thm,
+	red,
 ];
 
 module.exports = http.createServer((req, res) => {
