@@ -1,4 +1,4 @@
-const fUtil = require("../fileUtil");
+const fUtil = require("../misc/file");
 const stuff = require("./info");
 const http = require("http");
 
