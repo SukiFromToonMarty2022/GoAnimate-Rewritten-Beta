@@ -10,3 +10,5 @@ npm start
 **When done, go to your web browser and navigate to `localhost`.**
 
 Due to copyright issues, the EvenNode server has been shut down.
+
+This branch is an anit raid lvm clone and has a movie save system witch tricks some raiders into saving the video when in fact the video won't come onto the videolist. Pretty cool invention, right folks?
