@@ -51,7 +51,7 @@ module.exports = function (req, res, url) {
 				allowScriptAccess: "always",
 				allowFullScreen: "true",
 			};
-			flashvars = `{"apiserver":"\/","m_mode":"school","isLogin":"Y","isEmbed":"0","ctc":"go","tlang":"en_US","storePath":"https:\/\/josephcrosmanplays532.github.io\/store\/4e75f501cfbf51e3\/<store>","clientThemePath":"https:\/\/josephcrosmanplays532.github.io\/static\/642cd772aad8e952\/<client_theme>","appCode":"go","page":"","siteId":"school","userId":"0DyHqK6Yj9dM","themeId":"${params.flashvars.themeId}","ut":23,"bs":"${params.flashvars.bs}"}`;
+			flashvars = `{"apiserver":"\/","m_mode":"school","bs":character,"isLogin":"Y","isEmbed":"0","ctc":"go","tlang":"en_US","storePath":"https:\/\/josephcrosmanplays532.github.io\/store\/4e75f501cfbf51e3\/<store>","clientThemePath":"https:\/\/josephcrosmanplays532.github.io\/static\/ad44370a650793d9\/<client_theme>","appCode":"go","page":"","siteId":"go","userId":"00EDZP3Cu0aw","themeId":"${params.flashvars.themeId}","ut":30}`;
 			object = `<object data="https://josephcrosmanplays532.github.io/animation/414827163ad4eb60/cc.swf" type="application/x-shockwave-flash" id="char_creator" width="960" height="600" class="flpl_initiated"><param name="align" value="middle"><param name="allowScriptAccess" value="always"><param name="allowFullScreen" value="true"><param name="wmode" value="transparent"><param name="flashvars" value="apiserver=%2F&amp;m_mode=school&amp;bs=${params.flashvars.bs}&amp;isLogin=Y&amp;isEmbed=0&amp;ctc=go&amp;tlang=en_US&amp;storePath=https%3A%2F%2Fjosephcrosmanplays532.github.io%2Fstore%2F4e75f501cfbf51e3%2F%3Cstore%3E&amp;clientThemePath=https%3A%2F%2Fjosephcrosmanplays532.github.io%2Fstatic%2Fad44370a650793d9%2F%3Cclient_theme%3E&amp;appCode=go&amp;page=&amp;siteId=go&amp;userId=00EDZP3Cu0aw&amp;themeId=${params.flashvars.themeId}&amp;ut=30"><param name="movie" value="https://josephcrosmanplays532.github.io/animation/414827163ad4eb60/cc.swf"></object>`;
 			break;
 		}
@@ -196,20 +196,24 @@ if (self !== top) {
     <div id="char_creator_client" align="center">${object}</div>
 </div>
 <script>
-jQuery('#char_creator_client').flash({
-    id: "char_creator",
-    swf: "https://josephcrosmanplays532.github.io/animation/414827163ad4eb60/cc.swf",
-    height: 600,
-    width: 960,
+var character = "${params.flashvars.bs}"; // change to "adam", "bob" , "eve" , or "rocky" depending on who you want to start with.
 
-    align: "middle",
-    allowScriptAccess: "always",
-    allowFullScreen: "true",
-    wmode: "transparent",
+$('#char_creator_client').flash({
+   id: "char_creator",
+   swf: "https://josephcrosmanplays532.github.io/animation/414827163ad4eb60/${type}.swf",
+   height: 600,
+   width: 960,
 
-    hasVersion: "10.3",
+   align: "middle",
+   allowScriptAccess: "always",
+   allowFullScreen: "true",
+   wmode: "transparent",
 
-    flashvars: ${flashvars}});
+   hasVersion: "10.3",
+
+   flashvars: ${flashvars}});
+
+}
 
 function goSubscribe()
 {
