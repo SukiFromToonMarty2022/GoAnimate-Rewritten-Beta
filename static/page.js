@@ -292,44 +292,42 @@ if (self !== top) {
                 <img alt="GoAnimate for Schools" id="logo" src="https://freeanimate-rewriten.github.io/goanimate-rewritten/rewritten.png">
             </a>
         </div>
-
-        <ul class="nav site-nav-alert-nav hidden-xs">
-            <li>
-                <a href="/html/messages.html" title="Messages"><span class="glyph-pro glyph-envelope"></span></a>
-            </li>
-            <li>
-                <a href="/html/notifications.html" title="Notifications"><span class="glyph-pro glyph-bell"></span></a>
-            </li>
-        </ul>
+	
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
 
+                <li><a class="button_small" onclick="document.getElementById('file2').click()">UPLOAD A CHARACTER</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Your Account <span class="caret"></span></a>
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Create a Character <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/html/dashboard.html">Dashboard</a></li>
-                        <li><a href="/html/list.html">Your Videos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="/html/account.html">Account Settings</a></li>
-                        <li><a href="/html/profile/0DyHqK6Yj9dM.html">Your Profile</a></li>
-                        <li class="divider"></li>
-                        <li><a class="logout-link" href="/html/logoff.html">Logout</a></li>
+                        <li><a href="/cc?themeId=family&bs=adam">Adam</a></li>
+			<li><a href="/cc?themeId=family&bs=eve">Eve</a></li>
+			<li><a href="/cc?themeId=family&bs=bob">Bob</a></li>
+			<li><a href="/cc?themeId=family&bs=rocky">Rocky</a></li>
+			<li claas="divider"></li>
+		        <li><a href="/cc?themeId=business&bs=default">Business</a></li>
+			<li><a href="/cc?themeId=business&bs=heavy">Heavy</a></li>
+			<li><a href="/cc?themeId=business&bs=kid">Kid</a></li>
+			<li claas="divider"></li>
+			<li><a href="/cc?themeId=whiteboard&bs=default">Whiteboard</a></li>
+		        <li><a href="/cc?themeId=whiteboard&bs=kid">Whiteboard (Kid)</a></li>
+			<li claas="divider"></li>
+			<li><a href="/cc?themeId=anime&bs=guy">Guy (Anime)</a></li>
+			<li><a href="/cc?themeId=anime&bs=girl">Girl (Anime)</a></li>
+			<li claas="divider"></li>
+			<li><a href="/cc?themeId=ninjaanime&bs=guy">Guy (Ninja Anime)</a></li>
+			<li><a href="/cc?themeId=ninjaanime&bs=girl">Girl (Ninja Anime)</a></li>
+			<li claas="divider"></li>
+			<li><a href="/cc?themeId=cc2&bs=default">Lil Peepz</a></li>
+			<li claas="divider"></li>
+			<li><a href="/cc?themeId=chibi&bs=default">Chibi Peepz</a></li>
+			<li claas="divider"></li>
+			<li><a href="/cc?themeId=ninja&bs=default">Chibi Ninjas</a></li>
                     </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Explore <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/students">Students</a></li>
-                        <li><a href="/teachers">Teachers</a></li>
-                        <li><a href="/videos">Videos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="/blogs">Educator Experiences</a></li>
-                        <li><a href="/public_faq">FAQ</a></li>
-                    </ul>
-                </li>
+                </li> 
                 <li>
                     <a class="hidden-sm hidden-md hidden-lg" href="">Make a Video</a>
-                    <span class="site-nav-btn hidden-xs"><a class="btn btn-green" href="">Make a Video</a></span>
+                    <span class="site-nav-btn hidden-xs"><a class="btn btn-orange" href="">Make a Video</a></span>
                 </li>
             </ul>
         </div>
