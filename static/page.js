@@ -295,10 +295,10 @@ if (self !== top) {
 
         <ul class="nav site-nav-alert-nav hidden-xs">
             <li>
-                <a href="/html/messages.html" title="Messages"><span class="glyphicon glyphicon-envelope"></span><span class="count"></span></a>
+                <a href="/html/messages.html" title="Messages"><span class="glyph-pro glyph-envelope"></span><span class="count"></span></a>
             </li>
             <li>
-                <a href="/html/notifications.html" title="Notifications"><span class="glyphicon glyphicon-bell"></span><span class="count"></span></a>
+                <a href="/html/notifications.html" title="Notifications"><span class="glyph-pro glyph-bell"></span><span class="count"></span></a>
             </li>
         </ul>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
