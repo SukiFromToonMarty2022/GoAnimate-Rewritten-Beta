@@ -304,24 +304,24 @@ if (self !== top) {
 			<li><a href="/cc?themeId=family&bs=eve">Eve</a></li>
 			<li><a href="/cc?themeId=family&bs=bob">Bob</a></li>
 			<li><a href="/cc?themeId=family&bs=rocky">Rocky</a></li>
-			<li claas="divider"></li>
+			<li class="divider"></li>
 		        <li><a href="/cc?themeId=business&bs=default">Business</a></li>
 			<li><a href="/cc?themeId=business&bs=heavy">Heavy</a></li>
 			<li><a href="/cc?themeId=business&bs=kid">Kid</a></li>
-			<li claas="divider"></li>
+			<li class="divider"></li>
 			<li><a href="/cc?themeId=whiteboard&bs=default">Whiteboard</a></li>
 		        <li><a href="/cc?themeId=whiteboard&bs=kid">Whiteboard (Kid)</a></li>
-			<li claas="divider"></li>
+			<li class="divider"></li>
 			<li><a href="/cc?themeId=anime&bs=guy">Guy (Anime)</a></li>
 			<li><a href="/cc?themeId=anime&bs=girl">Girl (Anime)</a></li>
-			<li claas="divider"></li>
+			<li class="divider"></li>
 			<li><a href="/cc?themeId=ninjaanime&bs=guy">Guy (Ninja Anime)</a></li>
 			<li><a href="/cc?themeId=ninjaanime&bs=girl">Girl (Ninja Anime)</a></li>
-			<li claas="divider"></li>
+			<li class="divider"></li>
 			<li><a href="/cc?themeId=cc2&bs=default">Lil Peepz</a></li>
 			<li claas="divider"></li>
 			<li><a href="/cc?themeId=chibi&bs=default">Chibi Peepz</a></li>
-			<li claas="divider"></li>
+			<li class="divider"></li>
 			<li><a href="/cc?themeId=ninja&bs=default">Chibi Ninjas</a></li>
                     </ul>
                 </li> 
