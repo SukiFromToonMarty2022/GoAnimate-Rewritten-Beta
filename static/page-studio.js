@@ -33,80 +33,7 @@ module.exports = function (req, res, url) {
 
 	var attrs, params, name, begin, type, title, flashvars;
 	switch (url.pathname) {
-		case "/cc": {
-			title = 'Character Creator';
-			name = 'character';
-			begin = 'Create';
-			type = 'cc';
-			attrs = {
-				data: process.env.SWF_URL + '/cc.swf', // data: 'cc.swf',
-				type: 'application/x-shockwave-flash', 
-				id: 'char_creator',
-			};
-			params = {
-				flashvars: {
-					apiserver: "/",
-					storePath: process.env.STORE_URL + "/<store>",
-					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
-					original_asset_id: query["id"] || null,
-					themeId: "family",
-					ut: 60,
-					bs: "adam",
-					appCode: "go",
-					page: "",
-					siteId: "go",
-					m_mode: "school",
-					isLogin: "Y",
-					isEmbed: 1,
-					ctc: "go",
-					tlang: "en_US",
-                    nextUrl: "/cc_browser",
-				},
-				allowScriptAccess: "always",
-				movie: process.env.SWF_URL + "/cc.swf", // 'http://localhost/cc.swf'
-			};
-			flashvars = `${JSON.stringify(params.flashvars)}`;
-			break;
-		}
-
-		case "/cc_browser": {
-			title = "Character Browser";
-			begin = "Browse";
-			name = "characters";
-			type = "cc_browser";
-			attrs = {
-				data: process.env.SWF_URL + "/cc_browser.swf", // data: 'cc_browser.swf',
-				type: "application/x-shockwave-flash",
-				id: "char_browser",
-			};
-			params = {
-				flashvars: {
-					apiserver: "/",
-					storePath: process.env.STORE_URL + "/<store>",
-					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
-					original_asset_id: query["id"] || null,
-					themeId: "family",
-					ut: 30,
-					appCode: "go",
-					page: "",
-					siteId: "go",
-					m_mode: "school",
-					isLogin: "Y",
-					retut: 1,
-					goteam_draft_only: 1,
-					isEmbed: 1,
-					ctc: "go",
-					tlang: "en_US",
-					lid: 13,
-				},
-				allowScriptAccess: "always",
-				movie: process.env.SWF_URL + "/cc_browser.swf", // 'http://localhost/cc_browser.swf'
-			};
-			flashvars = `${JSON.stringify(params.flashvars)}`;
-			break;
-		}
-
-		case "/go_full":
+	        case "/go_full":
 		case "/go_full/tutorial": {
 			let presave =
 				query.movieId && query.movieId.startsWith("m")
@@ -123,86 +50,13 @@ module.exports = function (req, res, url) {
 			};
 			params = {
 				flashvars: {
-					apiserver: "/",
 					tray: "custom",
-					storePath: process.env.STORE_URL + "/<store>",
-					isEmbed: 1,
-					ctc: "go",
-					ut: 50,
-					bs: "default",
-					appCode: "go",
-					page: "",
-					siteId: "go",
-					lid: 13,
-					isLogin: "Y",
-					retut: 0,
-					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
-					themeId: "custom",
-					tlang: "en_US",
 					presaveId: presave,
-					goteam_draft_only: 1,
-					isWide: 1,
-					collab: 0,
-					nextUrl: "../pages/html/list.html",
-					noSkipTutorial: 1,
 				},
 				allowScriptAccess: "always",
 				allowFullScreen: "true",
 			};
-			flashvars = `{"movieId":"","loadas":0,"asId":"","originalId":"","apiserver":"\/","storePath":"https:\/\/josephcrosmanplays532.github.io\/store\/4e75f501cfbf51e3\/<store>","clientThemePath":"https:\/\/josephcrosmanplays532.github.io\/static\/a58ff843b3f92207\/<client_theme>","animationPath":"https:\/\/josephcrosmanplays532.github.io\/animation\/cce25167cb1d3404\/","userId":"0VLx9lDwEqAA","username":"GoAnimate Rewrui","uemail":"lhp73672@pdold.com","numContact":"0","ut":23,"ve":false,"isEmbed":0,"nextUrl":"\/movie\/<movieId>\/0\/1","bgload":"https:\/\/josephcrosmanplays532.github.io\/animation\/cce25167cb1d3404\/${type}.swf","lid":"12","ctc":"go","themeColor":"silver","tlang":"en_US","siteId":"12","templateshow":"false","forceshow":"false","appCode":"go","lang":"en","tmcc":"192","fb_app_url":"https:\/\/josephcrosmanplays532.github.io\/","is_published":"1","is_private_shared":"0","upl":1,"role":"teacher","hb":"1","pts":"0","msg_index":"","ad":0,"has_asset_bg":0,"has_asset_char":0,"initcb":"studioLoaded","retut":0,"s3base":"https:\/\/s3.amazonaws.com\/fs.goanimate.com\/","st":"","uisa":0,"u_info_school":"OjI6blIwOGZwQl93Q1FiaTJVOHZvektGZzNfVjJnZXRaaXBaMjY1TW9jTVBLeEFHUzk0aDhOWXVpRlRpdk5XcGpMN29Xd1NESURIaHlyNFZLRXpwczUyY29KR3RpQWJ2cUN0U21wWDh3T080WnUxYm9icHJBYlQ4PQ==","tm":"FIN","tray":"${params.flashvars.tray}","uplp":1,"isWide":1}`;
-			break;
-		}
-
-		case "/player": {
-			title = "Video Player";
-			begin = "Play";
-			name = "video";
-			type = "player";
-			attrs = {
-				data: process.env.SWF_URL + "/player.swf",
-				type: "application/x-shockwave-flash",
-				id: "video_player",
-			};
-			params = {
-				flashvars: {
-					apiserver: "/",
-					storePath: process.env.STORE_URL + "/<store>",
-					ut: 30,
-					autostart: 1,
-					isWide: 1,
-					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
-				},
-				allowScriptAccess: "always",
-				allowFullScreen: "true",
-			};
-			flashvars = `${JSON.stringify(params.flashvars)}`;
-			break;
-		}
-
-		case "/recordWindow": {
-			title = "Record Window";
-			begin = "Record";
-			name = "video";
-			type = "player";
-			attrs = {
-				data: process.env.SWF_URL + "/player.swf",
-				type: "application/x-shockwave-flash",
-				id: "video_player",
-				quality: "medium",
-			};
-			params = {
-				flashvars: {
-					apiserver: "/",
-					storePath: process.env.STORE_URL + "/<store>",
-					ut: 30,
-					autostart: 0,
-					isWide: 1,
-					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
-				},
-				allowScriptAccess: "always",
-				allowFullScreen: "true",
-			};
-			flashvars = `${JSON.stringify(params.flashvars)}`;
+			flashvars = `{"presaveId":"${params.flashvars.presaveId}"movieId":"","loadas":0,"asId":"","originalId":"","apiserver":"\/","storePath":"https:\/\/josephcrosmanplays532.github.io\/store\/4e75f501cfbf51e3\/<store>","clientThemePath":"https:\/\/josephcrosmanplays532.github.io\/static\/a58ff843b3f92207\/<client_theme>","animationPath":"https:\/\/josephcrosmanplays532.github.io\/animation\/cce25167cb1d3404\/","userId":"0VLx9lDwEqAA","username":"GoAnimate Rewrui","uemail":"lhp73672@pdold.com","numContact":"0","ut":23,"ve":false,"isEmbed":0,"nextUrl":"\/movie\/<movieId>\/0\/1","bgload":"https:\/\/josephcrosmanplays532.github.io\/animation\/cce25167cb1d3404\/${type}.swf","lid":"12","ctc":"go","themeColor":"silver","tlang":"en_US","siteId":"12","templateshow":"false","forceshow":"false","appCode":"go","lang":"en","tmcc":"192","fb_app_url":"https:\/\/josephcrosmanplays532.github.io\/","is_published":"1","is_private_shared":"0","upl":1,"role":"teacher","hb":"1","pts":"0","msg_index":"","ad":0,"has_asset_bg":0,"has_asset_char":0,"initcb":"studioLoaded","retut":0,"s3base":"https:\/\/s3.amazonaws.com\/fs.goanimate.com\/","st":"","uisa":0,"u_info_school":"OjI6blIwOGZwQl93Q1FiaTJVOHZvektGZzNfVjJnZXRaaXBaMjY1TW9jTVBLeEFHUzk0aDhOWXVpRlRpdk5XcGpMN29Xd1NESURIaHlyNFZLRXpwczUyY29KR3RpQWJ2cUN0U21wWDh3T080WnUxYm9icHJBYlQ4PQ==","tm":"FIN","tray":"${params.flashvars.tray}","uplp":1,"isWide":1}`;
 			break;
 		}
 
