@@ -3,7 +3,7 @@ const caché = require('./caché');
 const fUtil = require('../fileUtil');
 
 module.exports = function (req, res, url) {
-	if (req.method != 'POST' || url.path != '/goapi/saveTemplate/') return;
+	if (req.method != 'POST' || url.path != '/goapi/saveTemplate/' && url.path != '/goapi/saveMovie/') return;
 	loadPost(req, res).then(data => {
 		var fn, id;
 		if (data.movieId)
