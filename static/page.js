@@ -37,7 +37,7 @@ module.exports = function (req, res, url) {
 			title = 'Character Creator';
 			name = 'character';
 			begin = 'Create';
-			type = 'cc_browser';
+			type = 'cc';
 			attrs = {
 				data: process.env.SWF_URL + '/cc.swf', // data: 'cc.swf',
 				type: 'application/x-shockwave-flash', 
