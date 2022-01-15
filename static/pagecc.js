@@ -31,7 +31,7 @@ module.exports = function (req, res, url) {
 	if (req.method != "GET") return;
 	const query = url.query;
 
-	var attrs, params, name, begin, type, title, flashvars, object;
+	var attrs, params, name, begin, type, title, object;
 	switch (url.pathname) {
 		case "/cc": {
 			title = "Character Creator";
@@ -51,7 +51,6 @@ module.exports = function (req, res, url) {
 				allowScriptAccess: "always",
 				allowFullScreen: "true",
 			};
-			flashvars = `{"apiserver":"\/","m_mode":"school","bs":character,"isLogin":"Y","isEmbed":"0","ctc":"go","tlang":"en_US","storePath":"https:\/\/josephcrosmanplays532.github.io\/store\/4e75f501cfbf51e3\/<store>","clientThemePath":"https:\/\/josephcrosmanplays532.github.io\/static\/ad44370a650793d9\/<client_theme>","appCode":"go","page":"","siteId":"go","userId":"00EDZP3Cu0aw","themeId":"${params.flashvars.themeId}","ut":30}`;
 			object = `<object data="https://josephcrosmanplays532.github.io/animation/414827163ad4eb60/cc.swf" type="application/x-shockwave-flash" id="char_creator" width="960" height="600" class="flpl_initiated"><param name="align" value="middle"><param name="allowScriptAccess" value="always"><param name="allowFullScreen" value="true"><param name="wmode" value="transparent"><param name="flashvars" value="apiserver=%2F&amp;m_mode=school&amp;bs=${params.flashvars.bs}&amp;isLogin=Y&amp;isEmbed=0&amp;ctc=go&amp;tlang=en_US&amp;storePath=https%3A%2F%2Fjosephcrosmanplays532.github.io%2Fstore%2F4e75f501cfbf51e3%2F%3Cstore%3E&amp;clientThemePath=https%3A%2F%2Fjosephcrosmanplays532.github.io%2Fstatic%2Fad44370a650793d9%2F%3Cclient_theme%3E&amp;appCode=go&amp;page=&amp;siteId=go&amp;userId=00EDZP3Cu0aw&amp;themeId=${params.flashvars.themeId}&amp;ut=30"><param name="movie" value="https://josephcrosmanplays532.github.io/animation/414827163ad4eb60/cc.swf"></object>`;
 			break;
 		}
@@ -211,7 +210,7 @@ $('#char_creator_client').flash({
 
    hasVersion: "10.3",
 
-   flashvars: ${flashvars}});
+   flashvars: {"apiserver":"\/","m_mode":"school","bs":character,"isLogin":"Y","isEmbed":"0","ctc":"go","tlang":"en_US","storePath":"https:\/\/josephcrosmanplays532.github.io\/store\/4e75f501cfbf51e3\/<store>","clientThemePath":"https:\/\/josephcrosmanplays532.github.io\/static\/ad44370a650793d9\/<client_theme>","appCode":"go","page":"","siteId":"go","userId":"00EDZP3Cu0aw","themeId":"${params.flashvars.themeId}","ut":30}});
 
 }
 
