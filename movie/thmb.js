@@ -1,24 +1,13 @@
-const movie = require("./main");
-const http = require("http");
-
-/**
- * @param {http.IncomingMessage} req
- * @param {http.ServerResponse} res
- * @param {string} url
- * @returns {boolean}
- */
+const movie = require('./main');
 module.exports = function (req, res, url) {
-	if (req.method != "GET" || !url.path.startsWith("/movie_thumbs")) return;
-	movie
-		.thumb(url.path.substr(url.path.lastIndexOf("/") + 1))
-		.then((v) => {
-			res.setHeader("Content-Type", "image/png");
-			res.statusCode = 200;
-			res.end(v);
+	if (req.method != 'GET' || !url.path.startsWith('/movie_thumbs')) return;
+	movie.thumb(url.path.substr(url.path.lastIndexOf('/') + 1))
+		.then(v => {
+			res.setHeader('Content-Type', 'image/png');
+			res.statusCode = 200; res.end(v);
 		})
 		.catch(() => {
-			res.statusCode = 400;
-			res.end();
+			res.statusCode = 400; res.end();
 		});
 	return true;
-};
+}

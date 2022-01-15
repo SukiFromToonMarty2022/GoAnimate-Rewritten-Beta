@@ -5,7 +5,7 @@ const fXml = env.FAILURE_XML;
 const baseUrl = env.CHAR_BASE_URL;
 const fw = env.FILE_WIDTH;
 const fs = require('fs');
-const fUtil = require('./fileUtil');
+const fUtil = require('../fileUtil');
 const request = require('../request/get');
 /**
  * 

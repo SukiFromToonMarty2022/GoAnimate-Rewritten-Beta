@@ -1,6 +1,6 @@
 const loadPost = require('../request/post_body');
 const caché = require('./caché');
-const fUtil = require('./fileUtil');
+const fUtil = require('../fileUtil');
 
 module.exports = function (req, res, url) {
 	if (req.method != 'POST' || url.path != '/goapi/saveTemplate/') return;

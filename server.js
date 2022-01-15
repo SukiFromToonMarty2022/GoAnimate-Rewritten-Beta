@@ -6,13 +6,10 @@ const http = require('http');
 const pmc = require('./character/premade');
 const chl = require('./character/load');
 const chs = require('./character/save');
-const ccu = require('./character/upload');
-const thm = require('./character/thmb');
-const red = require('./character/redirect');
+const mvu = require('./movie/upload');
 const asu = require('./asset/upload');
 const stl = require('./static/load');
 const stp = require('./static/page');
-const stc = require('./static/pagecc');
 const asl = require('./asset/load');
 const asL = require('./asset/list');
 const ast = require('./asset/thmb');
@@ -48,12 +45,9 @@ const functions = [
 	svs,
 	tsv,
 	asu,
+	mvu,
 	stp,
 	stl,
-	ccu,
-	thm,
-	red,
-	stc,
 ];
 
 module.exports = http.createServer((req, res) => {

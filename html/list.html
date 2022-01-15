@@ -5,7 +5,7 @@
 				<a href="./"><img src="https://freeanimate-rewriten.github.io/goanimate-rewritten/rewritten.png" /></a>
 			</div>
 			<div>
-				<a class="button_small" onclick="document.getElementById('file2').click()">UPLOAD A CHARACTER</a>
+				<a class="button_small" onclick="document.getElementById('file').click()">UPLOAD A MOVIE</a>
 				<div class="char_dropdown button_small">
 					<div>CREATE A CHARACTER</div>
 					<menu>
@@ -32,6 +32,7 @@
 						<a href="/cc?themeId=chibi&bs=default">Chibi Peepz</a>
 						<div></div>
 						<a href="/cc?themeId=ninja&bs=default">Chibi Ninjas</a>
+						<div></div>
 
 					</menu>
 				</div>
@@ -61,8 +62,8 @@
 			</tr>
 		</tfoot>
 	</table>
-	<form enctype='multipart/form-data' action='/upload_character' method='post'>
-		<input id='file2' type="file" onchange="this.form.submit()" name='import' />
+	<form enctype='multipart/form-data' action='/upload_movie' method='post'>
+		<input id='file' type="file" onchange="this.form.submit()" name='import' />
 	</form>
 	<script>
 		const closeReq = new XMLHttpRequest();
@@ -88,7 +89,7 @@
 				const tbl = json[c];
 				const date = tbl.date.substr(0, 10) + ' ' + tbl.date.substr(11);
 				tbody.insertAdjacentHTML('beforeend',
-					'<tr><td><img src="/movie_thumbs/' + tbl.id + '"></td><td><div>' + tbl.title + '</div><div>' + tbl.durationString + '</div></div></td><td><span>' + date.match(/./g).join('</span><span>') + '</span></td><td><a href="/movies/' + tbl.id + '.xml" download="' + tbl.title + '"></a></td></tr>');
+					'<tr><td><img src="/movie_thumbs/' + tbl.id + '"></td><td><div>' + tbl.title + '</div><div>' + tbl.durationString + '</div></div></td><td><span>' + date.match(/./g).join('</span><span>') + '</span></td><td><a href="javascript:;" onclick="popup(\'' + tbl.id + '\')"></a><a href="/go_full?movieId=' + tbl.id + '"></a><a href="/movies/' + tbl.id + '.xml" download="' + tbl.title + '"></a></td></tr>');
 			}
 		}
 
@@ -357,7 +358,15 @@
 			color: #d85e27;
 		}
 
-		tr>:nth-child(4)>:before {
+		tr>:nth-child(4)>:nth-child(1)::before {
+			content: '\E174';
+		}
+
+		tr>:nth-child(4)>:nth-child(2)::before {
+			content: '\E235';
+		}
+
+		tr>:nth-child(4)>:nth-child(3)::before {
 			content: '\E182';
 		}
 
