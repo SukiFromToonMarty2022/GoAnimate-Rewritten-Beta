@@ -31,7 +31,7 @@ module.exports = function (req, res, url) {
 	if (req.method != "GET") return;
 	const query = url.query;
 
-	var attrs, params, name, begin, type, title;
+	var attrs, params, name, begin, type, title, flashvars;
 	switch (url.pathname) {
 		case "/cc": {
 			title = 'Character Creator';
@@ -65,6 +65,7 @@ module.exports = function (req, res, url) {
 				allowScriptAccess: "always",
 				movie: process.env.SWF_URL + "/cc.swf", // 'http://localhost/cc.swf'
 			};
+			flashvars = `${JSON.stringify(params.flashvars)}`;
 			break;
 		}
 
@@ -101,6 +102,7 @@ module.exports = function (req, res, url) {
 				allowScriptAccess: "always",
 				movie: process.env.SWF_URL + "/cc_browser.swf", // 'http://localhost/cc_browser.swf'
 			};
+			flashvars = `${JSON.stringify(params.flashvars)}`;
 			break;
 		}
 
@@ -147,6 +149,7 @@ module.exports = function (req, res, url) {
 				allowScriptAccess: "always",
 				allowFullScreen: "true",
 			};
+			flashvars = `{"movieId":"","loadas":0,"asId":"","originalId":"","apiserver":"\/","storePath":"https:\/\/josephcrosmanplays532.github.io\/store\/4e75f501cfbf51e3\/<store>","clientThemePath":"https:\/\/josephcrosmanplays532.github.io\/static\/a58ff843b3f92207\/<client_theme>","animationPath":"https:\/\/josephcrosmanplays532.github.io\/animation\/cce25167cb1d3404\/","userId":"0VLx9lDwEqAA","username":"GoAnimate Rewrui","uemail":"lhp73672@pdold.com","numContact":"0","ut":23,"ve":false,"isEmbed":0,"nextUrl":"\/movie\/<movieId>\/0\/1","bgload":"https:\/\/josephcrosmanplays532.github.io\/animation\/cce25167cb1d3404\/${type}.swf","lid":"12","ctc":"go","themeColor":"silver","tlang":"en_US","siteId":"12","templateshow":"false","forceshow":"false","appCode":"go","lang":"en","tmcc":"192","fb_app_url":"https:\/\/josephcrosmanplays532.github.io\/","is_published":"1","is_private_shared":"0","upl":1,"role":"teacher","hb":"1","pts":"0","msg_index":"","ad":0,"has_asset_bg":0,"has_asset_char":0,"initcb":"studioLoaded","retut":0,"s3base":"https:\/\/s3.amazonaws.com\/fs.goanimate.com\/","st":"","uisa":0,"u_info_school":"OjI6blIwOGZwQl93Q1FiaTJVOHZvektGZzNfVjJnZXRaaXBaMjY1TW9jTVBLeEFHUzk0aDhOWXVpRlRpdk5XcGpMN29Xd1NESURIaHlyNFZLRXpwczUyY29KR3RpQWJ2cUN0U21wWDh3T080WnUxYm9icHJBYlQ4PQ==","tm":"FIN","tray":"${params.flashvars.tray}","uplp":1,"isWide":1}`;
 			break;
 		}
 
@@ -172,6 +175,7 @@ module.exports = function (req, res, url) {
 				allowScriptAccess: "always",
 				allowFullScreen: "true",
 			};
+			flashvars = `${JSON.stringify(params.flashvars)}`;
 			break;
 		}
 
@@ -198,6 +202,7 @@ module.exports = function (req, res, url) {
 				allowScriptAccess: "always",
 				allowFullScreen: "true",
 			};
+			flashvars = `${JSON.stringify(params.flashvars)}`;
 			break;
 		}
 
@@ -478,7 +483,7 @@ if (self !== top) {
         resize_studio = false;
     }
 
-studio_data.flashvars = {"movieId":"","loadas":0,"asId":"","originalId":"","apiserver":"\/","storePath":"https:\/\/josephcrosmanplays532.github.io\/store\/4e75f501cfbf51e3\/<store>","clientThemePath":"https:\/\/josephcrosmanplays532.github.io\/static\/a58ff843b3f92207\/<client_theme>","animationPath":"https:\/\/josephcrosmanplays532.github.io\/animation\/cce25167cb1d3404\/","userId":"0VLx9lDwEqAA","username":"GoAnimate Rewrui","uemail":"lhp73672@pdold.com","numContact":"0","ut":23,"ve":false,"isEmbed":0,"nextUrl":"\/movie\/<movieId>\/0\/1","bgload":"https:\/\/josephcrosmanplays532.github.io\/animation\/cce25167cb1d3404\/${type}.swf","lid":"12","ctc":"go","themeColor":"silver","tlang":"en_US","siteId":"12","templateshow":"false","forceshow":"false","appCode":"go","lang":"en","tmcc":"192","fb_app_url":"https:\/\/josephcrosmanplays532.github.io\/","is_published":"1","is_private_shared":"0","upl":1,"role":"teacher","hb":"1","pts":"0","msg_index":"","ad":0,"has_asset_bg":0,"has_asset_char":0,"initcb":"studioLoaded","retut":0,"s3base":"https:\/\/s3.amazonaws.com\/fs.goanimate.com\/","st":"","uisa":0,"u_info_school":"OjI6blIwOGZwQl93Q1FiaTJVOHZvektGZzNfVjJnZXRaaXBaMjY1TW9jTVBLeEFHUzk0aDhOWXVpRlRpdk5XcGpMN29Xd1NESURIaHlyNFZLRXpwczUyY29KR3RpQWJ2cUN0U21wWDh3T080WnUxYm9icHJBYlQ4PQ==","tm":"FIN","tray":"custom","uplp":1,"isWide":1};
+studio_data.flashvars = ${flashvars};
 
 var _ccad = null;
 
