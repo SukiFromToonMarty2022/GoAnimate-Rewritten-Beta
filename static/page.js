@@ -31,7 +31,7 @@ module.exports = function (req, res, url) {
 	if (req.method != "GET") return;
 	const query = url.query;
 
-	var attrs, params, name, begin, title;
+	var attrs, params, name, begin, type, title;
 	switch (url.pathname) {
 		case "/cc": {
 			title = 'Character Creator';
@@ -229,50 +229,121 @@ module.exports = function (req, res, url) {
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
 <link rel="stylesheet" href="https://josephcrosmanplays532.github.io/static/ad44370a650793d9/go/css/common_combined.css.gz.css">
 
-<link rel="stylesheet" href="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/css/importer.css.gz.css">
-<link rel="stylesheet" href="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/school/css/studio.css.gz.css">
+<link rel="stylesheet" href="https://josephcrosmanplays532.github.io/GoAnimate-Rewriten-Files/studio/css/importer.css.gz.css">
+<link rel="stylesheet" href="https://josephcrosmanplays532.github.io/GoAnimate-Rewriten-Files/studio/css/studio.css.gz.css">
 
-<script>
-var srv_tz_os = -4, view_name = "school", user_cookie_name = "u_info_school";
-var user_country = "US";
+<script src="https://js.hs-scripts.com/491659.js" type="text/javascript" id="hs-script-loader"></script><script type="text/javascript" async="" src="https://koi-3q6b8sg59e.marketingautomation.services/client/ss.js?ver=1.1.1"></script><script id="hs-analytics" src="//js.hs-analytics.net/analytics/1517491800000/491659.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/plugins/ua/ecommerce.js"></script><script async="" src="//www.google-analytics.com/analytics.js"></script><script>
+var srv_tz_os = -5, view_name = "school", user_cookie_name = "u_info_school";
+var user_country = "CA";
 </script>
 
 <!--[if lt IE 9]>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/js/lib/html5shiv.js.gz.js"></script>
+<script src="https://d2qrjeyl4jwu9j.cloudfront.net/static/a58ff843b3f92207/go/js/lib/html5shiv.js.gz.js"></script>
 <![endif]-->
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/school/js/common_combined.js.gz.js"></script>
-<script type="text/javascript" src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/po/goserver_js-en_US.json.gz.json"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-Rewriten-Files/studio/js/common_combined.js.gz.js"></script>
+<script type="text/javascript" src="https://josephcrosmanplays532.github.io/GoAnimate-Rewriten-Files/studio/po/goserver_js-en_US.json.gz.json"></script>
 <script type="text/javascript">
 var I18N_LANG = 'en_US';
 var GT = new Gettext({'locale_data': json_locale_data});
 </script>
-<script src="https://ga.vyond.com/ajax/cookie_policy" async=""></script>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/js/movie.js.gz.js"></script>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/js/cookie.js.gz.js"></script>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/js/studio.js.gz.js"></script>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/js/jquery/jquery.tmpl.min.js.gz.js"></script>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/school/js/studio.js.gz.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-Rewriten-Files/studio/js/movie.js.gz.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-Rewriten-Files/studio/js/cookie.js.gz.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-Rewriten-Files/studio/js/studio.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-Rewriten-Files/studio/js/jquery/jquery.tmpl.min.js.gz.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-Rewriten-Files/studio/js/studio.js.gz.js"></script>
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-2516970-15', { 'userId': '0VLx9lDwEqAA' });
+
+        ga('send', 'pageview');
+
+ga('require', 'ecommerce');
+
+$(function() {
+    var COOKIE_LAST_URL_LIFETIME = 5,
+        COOKIE_BLOCKER_LIFETIME = 900;
+
+    function setSessionCookie(cookie_name, cookie_value, lifetime) {
+        document.cookie = cookie_name + '=' + escape(cookie_value) + '; path=/; max-age=' + lifetime + ';';
+    }
+    function getSessionCookie(cookie_name) {
+        var results = document.cookie.match('(^|;) ?' + cookie_name + '=([^;]*)(;|$)');
+        if (results) {
+            return (unescape(results[2]));
+        } else {
+            return null;
+        }
+    }
+
+    $(window).on({
+        unload: function() {
+            setSessionCookie('lasturl', window.location.href, COOKIE_LAST_URL_LIFETIME);
+        },
+        onbeforeunload: function() {
+            setSessionCookie('lasturl', window.location.href, COOKIE_LAST_URL_LIFETIME);
+        },
+        load: function() {
+            var http_referrer = document.referrer,
+                blocker = getSessionCookie('gasessid');
+
+            if (http_referrer === '') {
+                http_referrer = getSessionCookie('lasturl');
+            }
+            if ((http_referrer === '') || (blocker === null)) {
+                if (typeof(ga) !== 'undefined') {
+                    var currentDate = new Date(),
+                        sessionId,
+                        clientId;
+
+                    // Assume we only have one tracker
+                    try {
+                        var trackers = ga.getAll();
+                        var currentDate = new Date(),
+                            clientId = trackers[0].get('clientId'),
+                            sessionId = clientId + '.' + currentDate.getTime();
+                        // Set custom dimension (UniqueID).
+                        ga('set', 'dimension1', clientId);
+                        // Set custom dimension (Session ID).
+                        ga('set', 'dimension2', sessionId);
+                        // Set blocker.
+                        setSessionCookie('gasessid', sessionId, COOKIE_BLOCKER_LIFETIME);
+                    } catch(e) {}
+                }
+            }
+        }
+    });
+  });
+</script>
+
+
 
 <!-- Google Knowledge Graph -->
 <script type="application/ld+json">
 {
-    "@context": "https://web.archive.org/web/20190524204241/http://schema.org",
+    "@context": "https://web.archive.org/web/20180207180629/http://schema.org",
     "@type": "Organization",
     "name": "GoAnimate",
-    "url": "https://web.archive.org/web/20190524204241/http://goanimate.com",
-    "logo": "https://web.archive.org/web/20190524204241/http://gawpstorage.s3.amazonaws.com/img/google_knowledge_graph_logo.jpg",
+    "url": "https://web.archive.org/web/20180207180629/http://goanimate.com",
+    "logo": "https://web.archive.org/web/20180207180629/http://gawpstorage.s3.amazonaws.com/img/google_knowledge_graph_logo.jpg",
     "sameAs": [
-        "https://web.archive.org/web/20190524204241/http://www.facebook.com/GoAnimateInc",
-        "https://web.archive.org/web/20190524204241/http://twitter.com/GoAnimate",
-        "https://web.archive.org/web/20190524204241/http://www.linkedin.com/company/goanimate",
-        "https://web.archive.org/web/20190524204241/http://plus.google.com/+goanimate",
-        "https://web.archive.org/web/20190524204241/http://www.youtube.com/user/GoAnimate"
+        "https://web.archive.org/web/20180207180629/http://www.facebook.com/GoAnimateInc",
+        "https://web.archive.org/web/20180207180629/http://twitter.com/GoAnimate",
+        "https://web.archive.org/web/20180207180629/http://www.linkedin.com/company/goanimate",
+        "https://web.archive.org/web/20180207180629/http://plus.google.com/+goanimate",
+        "https://web.archive.org/web/20180207180629/http://www.youtube.com/user/GoAnimate"
     ]
 }
 </script>
 
 </head>
-<body class="page-action-videomaker full_screen_studio" style="">
+<body class="page-action-videomaker full_screen_studio">
 <script type="text/javascript">
 if (self !== top) {
             jQuery('body').hide();
@@ -407,7 +478,7 @@ if (self !== top) {
         resize_studio = false;
     }
 
-studio_data.flashvars = {"movieId":"","loadas":0,"asId":"","originalId":"","apiserver":"\/","storePath":"https:\/\/josephcrosmanplays532.github.io\/store\/4e75f501cfbf51e3\/<store>","clientThemePath":"https:\/\/josephcrosmanplays532.github.io\/static\/a58ff843b3f92207\/<client_theme>","animationPath":"https:\/\/josephcrosmanplays532.github.io\/animation\/cce25167cb1d3404\/","userId":"0VLx9lDwEqAA","username":"GoAnimate Rewrui","uemail":"lhp73672@pdold.com","numContact":"0","ut":23,"ve":false,"isEmbed":0,"nextUrl":"\/movie\/<movieId>\/0\/1","bgload":"https:\/\/josephcrosmanplays532.github.io\/animation\/cce25167cb1d3404\/go_full.swf","lid":"12","ctc":"go","themeColor":"silver","tlang":"en_US","siteId":"12","templateshow":"false","forceshow":"false","appCode":"go","lang":"en","tmcc":"192","fb_app_url":"https:\/\/josephcrosmanplays532.github.io\/","is_published":"1","is_private_shared":"0","upl":1,"role":"teacher","hb":"1","pts":"0","msg_index":"","ad":0,"has_asset_bg":0,"has_asset_char":0,"initcb":"studioLoaded","retut":0,"s3base":"https:\/\/s3.amazonaws.com\/fs.goanimate.com\/","st":"","uisa":0,"u_info_school":"OjI6blIwOGZwQl93Q1FiaTJVOHZvektGZzNfVjJnZXRaaXBaMjY1TW9jTVBLeEFHUzk0aDhOWXVpRlRpdk5XcGpMN29Xd1NESURIaHlyNFZLRXpwczUyY29KR3RpQWJ2cUN0U21wWDh3T080WnUxYm9icHJBYlQ4PQ==","tm":"FIN","tray":"custom","uplp":1,"isWide":1};
+studio_data.flashvars = {"movieId":"","loadas":0,"asId":"","originalId":"","apiserver":"\/","storePath":"https:\/\/josephcrosmanplays532.github.io\/store\/4e75f501cfbf51e3\/<store>","clientThemePath":"https:\/\/josephcrosmanplays532.github.io\/static\/a58ff843b3f92207\/<client_theme>","animationPath":"https:\/\/josephcrosmanplays532.github.io\/animation\/cce25167cb1d3404\/","userId":"0VLx9lDwEqAA","username":"GoAnimate Rewrui","uemail":"lhp73672@pdold.com","numContact":"0","ut":23,"ve":false,"isEmbed":0,"nextUrl":"\/movie\/<movieId>\/0\/1","bgload":"https:\/\/josephcrosmanplays532.github.io\/animation\/cce25167cb1d3404\/${type}.swf","lid":"12","ctc":"go","themeColor":"silver","tlang":"en_US","siteId":"12","templateshow":"false","forceshow":"false","appCode":"go","lang":"en","tmcc":"192","fb_app_url":"https:\/\/josephcrosmanplays532.github.io\/","is_published":"1","is_private_shared":"0","upl":1,"role":"teacher","hb":"1","pts":"0","msg_index":"","ad":0,"has_asset_bg":0,"has_asset_char":0,"initcb":"studioLoaded","retut":0,"s3base":"https:\/\/s3.amazonaws.com\/fs.goanimate.com\/","st":"","uisa":0,"u_info_school":"OjI6blIwOGZwQl93Q1FiaTJVOHZvektGZzNfVjJnZXRaaXBaMjY1TW9jTVBLeEFHUzk0aDhOWXVpRlRpdk5XcGpMN29Xd1NESURIaHlyNFZLRXpwczUyY29KR3RpQWJ2cUN0U21wWDh3T080WnUxYm9icHJBYlQ4PQ==","tm":"FIN","tray":"custom","uplp":1,"isWide":1};
 
 var _ccad = null;
 
