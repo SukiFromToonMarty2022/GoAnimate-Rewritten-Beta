@@ -34,10 +34,6 @@ module.exports = function (req, res, url) {
 	var attrs, params, name, begin, type, title, flashvars, object;
 	switch (url.pathname) {
 		case "/cc": {
-			let presave =
-				query.movieId && query.movieId.startsWith("m")
-					? query.movieId
-					: `m-${fUtil[query.noAutosave ? "getNextFileId" : "fillNextFileId"]("movie-", ".xml")}`;
 			title = "Character Creator";
 			begin = "Create";
 			name = "character";
