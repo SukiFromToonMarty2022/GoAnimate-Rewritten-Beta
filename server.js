@@ -12,6 +12,7 @@ const red = require('./character/redirect');
 const asu = require('./asset/upload');
 const stl = require('./static/load');
 const stp = require('./static/page');
+const stc = require('./static/pagecc');
 const asl = require('./asset/load');
 const asL = require('./asset/list');
 const ast = require('./asset/thmb');
@@ -52,6 +53,7 @@ const functions = [
 	ccu,
 	thm,
 	red,
+	stc,
 ];
 
 module.exports = http.createServer((req, res) => {
