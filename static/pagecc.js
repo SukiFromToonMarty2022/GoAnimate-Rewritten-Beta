@@ -33,25 +33,24 @@ module.exports = function (req, res, url) {
 
 	var attrs, params, name, begin, type, title, flashvars, object;
 	switch (url.pathname) {
-	        case "/go_full":
-		case "/go_full/tutorial": {
+		case "/cc": {
 			let presave =
 				query.movieId && query.movieId.startsWith("m")
 					? query.movieId
 					: `m-${fUtil[query.noAutosave ? "getNextFileId" : "fillNextFileId"]("movie-", ".xml")}`;
-			title = "Video Editor";
+			title = "Character Creator";
 			begin = "Create";
-			name = "video";
-			type = "go_full";
+			name = "character";
+			type = "cc";
 			attrs = {
 				data: process.env.SWF_URL + "/go_full.swf",
 				type: "application/x-shockwave-flash",
-				id: "video_maker",
+				id: "character_creator",
 			};
 			params = {
 				flashvars: {
-					tray: "custom",
-					presaveId: presave,
+					themeId: "family",
+					bs: "adam",
 				},
 				allowScriptAccess: "always",
 				allowFullScreen: "true",
