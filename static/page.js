@@ -37,6 +37,7 @@ module.exports = function (req, res, url) {
 			title = 'Character Creator';
 			name = 'character';
 			begin = 'Create';
+			type = 'cc_browser';
 			attrs = {
 				data: process.env.SWF_URL + '/cc.swf', // data: 'cc.swf',
 				type: 'application/x-shockwave-flash', 
@@ -71,6 +72,7 @@ module.exports = function (req, res, url) {
 			title = "Character Browser";
 			begin = "Browse";
 			name = "characters";
+			type = "cc_browser";
 			attrs = {
 				data: process.env.SWF_URL + "/cc_browser.swf", // data: 'cc_browser.swf',
 				type: "application/x-shockwave-flash",
@@ -111,6 +113,7 @@ module.exports = function (req, res, url) {
 			title = "Video Editor";
 			begin = "Create";
 			name = "video";
+			type = "go_full";
 			attrs = {
 				data: process.env.SWF_URL + "/go_full.swf",
 				type: "application/x-shockwave-flash",
@@ -151,6 +154,7 @@ module.exports = function (req, res, url) {
 			title = "Video Player";
 			begin = "Play";
 			name = "video";
+			type = "player";
 			attrs = {
 				data: process.env.SWF_URL + "/player.swf",
 				type: "application/x-shockwave-flash",
@@ -175,6 +179,7 @@ module.exports = function (req, res, url) {
 			title = "Record Window";
 			begin = "Record";
 			name = "video";
+			type = "player";
 			attrs = {
 				data: process.env.SWF_URL + "/player.swf",
 				type: "application/x-shockwave-flash",
@@ -382,7 +387,7 @@ if (self !== top) {
 
     var studio_data = {
         id: "Studio",
-        swf: "https://josephcrosmanplays532.github.io/animation/414827163ad4eb60/go_full.swf",
+        swf: "https://josephcrosmanplays532.github.io/animation/414827163ad4eb60/${type}.swf",
         width: "100%",
         height: "100%",
 
