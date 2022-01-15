@@ -509,7 +509,7 @@ function proceedWithFullscreenStudio() {
             player_url: "https://josephcrosmanplays532.github.io/animation/414827163ad4eb60/player.swf",
             quality: "high"
         }, {
-            movieOwner: "", movieOwnerId: "", movieId: "m-7", ut: "-1",
+            movieOwner: "", movieOwnerId: "", movieId: "${params.flashvars.presaveId}", ut: "-1",
             movieLid: "8", movieTitle: "", movieDesc: "", userId: "", username: "", uemail: "",
             apiserver: "https://goanimatewrapperu.herokuapp.com/", thumbnailURL: "", copyable: "0", isPublished: "0", ctc: "go", tlang: "en_US", is_private_shared: "0",
             autostart: "1", appCode: "go", is_slideshow: "0", originalId: "0", is_emessage: "0", isEmbed: "0", refuser: "",
