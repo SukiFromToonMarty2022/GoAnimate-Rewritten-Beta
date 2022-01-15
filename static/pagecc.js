@@ -75,8 +75,12 @@ module.exports = function (req, res, url) {
 <meta property="og:site_name" content="GoAnimate for Schools">
 <meta property="fb:app_id" content="122508887813978">
 <meta name="google-site-verification" content="Vta3YTpj6Kx6u4p-EzeMArY0alNItkyUYYMvNM8seVI">
-
-
+<style>
+#logo {
+	margin-top: 4px;
+	height: 35px;
+}
+</style>
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
 <link rel="stylesheet" href="https://josephcrosmanplays532.github.io/static/ad44370a650793d9/go/css/common_combined.css.gz.css">
 
