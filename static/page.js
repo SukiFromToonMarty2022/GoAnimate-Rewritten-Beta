@@ -68,10 +68,10 @@ module.exports = function (req, res, url) {
 
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
-<link rel="stylesheet" href="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/school/css/common_combined.css.gz.css">
+<link rel="stylesheet" href="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/school/css/common_combined.css.gz.css">
 
 <link rel="stylesheet" href="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/go/css/importer.css.gz.css">
-<link rel="stylesheet" href="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/school/css/studio.css.gz.css">
+<link rel="stylesheet" href="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/school/css/studio.css.gz.css">
 
 <script>
 var srv_tz_os = -4, view_name = "school", user_cookie_name = "u_info_school";
@@ -79,20 +79,20 @@ var user_country = "US";
 </script>
 
 <!--[if lt IE 9]>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/js/lib/html5shiv.js.gz.js"></script>
+<script src="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/go/js/lib/html5shiv.js.gz.js"></script>
 <![endif]-->
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/school/js/common_combined.js.gz.js"></script>
-<script type="text/javascript" src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/po/goserver_js-en_US.json.gz.json"></script>
+<script src="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/school/js/common_combined.js.gz.js"></script>
+<script type="text/javascript" src="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/go/po/goserver_js-en_US.json.gz.json"></script>
 <script type="text/javascript">
 var I18N_LANG = 'en_US';
 var GT = new Gettext({'locale_data': json_locale_data});
 </script>
 <script src="https://ga.vyond.com/ajax/cookie_policy" async=""></script>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/js/movie.js.gz.js"></script>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/js/cookie.js.gz.js"></script>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/js/studio.js.gz.js"></script>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/js/jquery/jquery.tmpl.min.js.gz.js"></script>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/school/js/studio.js.gz.js"></script>
+<script src="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/go/js/movie.js.gz.js"></script>
+<script src="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/go/js/cookie.js.gz.js"></script>
+<script src="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/go/js/studio.js.gz.js"></script>
+<script src="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/go/js/jquery/jquery.tmpl.min.js.gz.js"></script>
+<script src="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/school/js/studio.js.gz.js"></script>
 
 <!-- Google Knowledge Graph -->
 <script type="application/ld+json">
@@ -129,7 +129,7 @@ if (self !== top) {
                 <span class="icon-bar"></span>
               </button>
             <a class="navbar-brand" href="/" title="GoAnimate for Schools">
-                <img alt="GoAnimate for Schools" src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/school/img/site/logo4s.png">
+                <img alt="GoAnimate for Schools" src="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/school/img/site/logo4s.png">
             </a>
         </div>
 
@@ -430,9 +430,9 @@ function proceedWithFullscreenStudio() {
         </ul>
     </div>
 </script>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/school/js/importer.js.gz.js"></script>
+<script src="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/school/js/importer.js.gz.js"></script>
 <script>window.searchTermsDataUrl = 'https://josephcrosmanplays532.github.io/store/4e75f501cfbf51e3/common/terms.json';</script>
-<script src="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/js/search-suggestion.js.gz.js"></script>
+<script src="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/go/js/search-suggestion.js.gz.js"></script>
 
 <script>
 ImporterFile.defaults.options.accept_mime = ["image\/png","image\/jpeg","image\/gif","image\/bmp","audio\/mpeg","audio\/wav","audio\/x-wav","audio\/vnd.wave","audio\/wave","audio\/mp3","audio\/mp4","audio\/ogg","audio\/vorbis","audio\/aac","audio\/m4a","audio\/x-m4a","application\/x-shockwave-flash","video\/mp4","video\/mpeg4","video\/x-flv","video\/x-ms-wmv","application\/mp4"];
