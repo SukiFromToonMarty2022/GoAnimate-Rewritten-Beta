@@ -70,7 +70,7 @@ module.exports = function (req, res, url) {
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
 <link rel="stylesheet" href="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/school/css/common_combined.css.gz.css">
 
-<link rel="stylesheet" href="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/go/css/importer.css.gz.css">
+<link rel="stylesheet" href="https://josephcrosmanplays532.github.io/static/a58ff843b3f92207/go/css/importer.css.gz.css">
 <link rel="stylesheet" href="https://josephcrosmanplays532.github.io/static/642cd772aad8e952/school/css/studio.css.gz.css">
 
 <script>
